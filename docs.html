@@ -53,20 +53,12 @@
         }
 
         nav a {
-            color: #ffffff;
+            color: #9ca3af;
             text-decoration: none;
             font-size: 12.5px;
-            transition: color 0.2s, opacity 0.2s;
+            transition: color 0.2s;
             letter-spacing: 0.01em;
             position: relative;
-        }
-
-        nav a.secondary {
-            opacity: 0.65;
-        }
-
-        nav a.secondary:hover {
-            opacity: 1;
         }
 
         nav a:hover {
@@ -75,7 +67,6 @@
 
         nav a.active {
             color: #ffffff;
-            opacity: 1;
         }
 
         nav a.active::after {
@@ -118,9 +109,14 @@
             margin-bottom: 28px;
         }
 
+        /* Main content */
+        main {
+            padding: 56px 0;
+        }
+
         /* Sections */
         section {
-            padding: 72px 0;
+            padding: 64px 0;
         }
 
         section h2 {
@@ -316,14 +312,14 @@
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request" class="secondary">GitHub</a>
-                <a href="pact-docs.pdf" target="_blank" class="secondary">Docs</a>
                 <a href="constitution.html">Constitution</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
                 <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://x.com/pact_protocol" target="_blank" class="secondary">X</a>
-                <a href="mailto:sean@dao5.com" class="secondary">Email</a>
+                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request">GitHub</a>
+                <a href="pact-docs.pdf" target="_blank" class="active">Docs</a>
+                <a href="mailto:sean@dao5.com">Email</a>
             </nav>
         </header>
 

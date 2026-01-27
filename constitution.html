@@ -53,20 +53,12 @@
         }
 
         nav a {
-            color: #ffffff;
+            color: #9ca3af;
             text-decoration: none;
             font-size: 12.5px;
-            transition: color 0.2s, opacity 0.2s;
+            transition: color 0.2s;
             letter-spacing: 0.01em;
             position: relative;
-        }
-
-        nav a.secondary {
-            opacity: 0.65;
-        }
-
-        nav a.secondary:hover {
-            opacity: 1;
         }
 
         nav a:hover {
@@ -75,7 +67,6 @@
 
         nav a.active {
             color: #ffffff;
-            opacity: 1;
         }
 
         nav a.active::after {
@@ -88,14 +79,10 @@
             background-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Main content */
-        main {
-            padding: 56px 0;
-        }
-
-        .intro {
+        /* Hero */
+        .hero {
+            padding: 72px 0 48px;
             max-width: 900px;
-            margin-bottom: 48px;
         }
 
         .hero-label {
@@ -107,19 +94,19 @@
             margin-bottom: 18px;
         }
 
-        .intro h1 {
-            font-size: 42px;
+        .hero h1 {
+            font-size: 52px;
             font-weight: 500;
-            margin-bottom: 22px;
-            letter-spacing: -0.01em;
             line-height: 1.1;
+            margin-bottom: 22px;
+            letter-spacing: -0.02em;
         }
 
-        .intro p {
-            font-size: 18px;
+        .hero p {
+            font-size: 19px;
             color: #d1d5db;
             line-height: 1.65;
-            max-width: 940px;
+            margin-bottom: 28px;
         }
 
         /* Main content */
@@ -129,15 +116,15 @@
 
         /* Sections */
         section {
+            padding: 64px 0;
             margin-bottom: 48px;
         }
 
         section h2 {
-            font-size: 28px;
+            font-size: 34px;
             font-weight: 500;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             letter-spacing: -0.01em;
-            color: #ffffff;
         }
 
         section p {
@@ -251,8 +238,8 @@
                 padding: 48px 0;
             }
 
-            .intro h1 {
-                font-size: 32px;
+            .hero h1 {
+                font-size: 36px;
             }
 
             section {
@@ -260,7 +247,7 @@
             }
 
             section h2 {
-                font-size: 24px;
+                font-size: 28px;
             }
         }
     </style>
@@ -270,24 +257,24 @@
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request" class="secondary">GitHub</a>
-                <a href="pact-docs.pdf" target="_blank" class="secondary">Docs</a>
                 <a href="constitution.html" class="active">Constitution</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
                 <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://x.com/pact_protocol" target="_blank" class="secondary">X</a>
-                <a href="mailto:sean@dao5.com" class="secondary">Email</a>
+                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request">GitHub</a>
+                <a href="pact-docs.pdf" target="_blank">Docs</a>
+                <a href="mailto:sean@dao5.com">Email</a>
             </nav>
         </header>
 
         <main>
-            <div class="intro">
+            <section class="hero">
                 <div class="hero-label">Constitution</div>
                 <h1>Pact Constitution (v1)</h1>
                 <p>This document defines the minimum rules for evidence, integrity, and responsibility attribution for Pact-generated transactions. It is written for auditors, legal, risk, and engineering teams.</p>
                 <p>This constitution governs only the generation, verification, and interpretation of Pact evidence. It does not govern commercial terms, pricing, or off-chain enforcement.</p>
-            </div>
+            </section>
 
             <section>
                 <h2>Definitions</h2>
