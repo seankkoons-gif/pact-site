@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" style="background-color: #050810;">
-  <rect width="800" height="400" fill="#050810"/>
-  <text x="400" y="200" font-family="monospace" font-size="16" fill="#9ca3af" text-anchor="middle">
-    Transcript Replay Screenshot
-  </text>
-  <text x="400" y="230" font-family="monospace" font-size="14" fill="#6b7280" text-anchor="middle">
-    (Placeholder - replace with actual screenshot)
-  </text>
-</svg>
