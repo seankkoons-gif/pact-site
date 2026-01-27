@@ -53,12 +53,20 @@
         }
 
         nav a {
-            color: #9ca3af;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
+            font-size: 12.5px;
+            transition: color 0.2s, opacity 0.2s;
             letter-spacing: 0.01em;
             position: relative;
+        }
+
+        nav a.secondary {
+            opacity: 0.65;
+        }
+
+        nav a.secondary:hover {
+            opacity: 1;
         }
 
         nav a:hover {
@@ -67,6 +75,7 @@
 
         nav a.active {
             color: #ffffff;
+            opacity: 1;
         }
 
         nav a.active::after {
@@ -81,8 +90,8 @@
 
         /* Hero */
         .hero {
-            padding: 100px 0 72px;
-            max-width: 760px;
+            padding: 72px 0 48px;
+            max-width: 900px;
         }
 
         .hero-label {
@@ -97,7 +106,7 @@
         .hero h1 {
             font-size: 52px;
             font-weight: 500;
-            line-height: 1.12;
+            line-height: 1.1;
             margin-bottom: 22px;
             letter-spacing: -0.02em;
         }
@@ -109,9 +118,60 @@
             margin-bottom: 28px;
         }
 
+        /* Main content layout */
+        main {
+            padding: 56px 0;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .content-main {
+            min-width: 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 6px;
+        }
+
+        .sidebar a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .sidebar a:hover {
+            color: #ffffff;
+        }
+
         /* Sections */
         section {
-            padding: 72px 0;
+            padding: 64px 0;
         }
 
         section h2 {
@@ -125,7 +185,7 @@
             font-size: 17px;
             color: #d1d5db;
             line-height: 1.75;
-            max-width: 720px;
+            max-width: 940px;
         }
 
         section p + p {
@@ -154,7 +214,7 @@
         }
 
         ul li + li {
-            margin-top: 12px;
+            margin-top: 6px;
         }
 
         /* Code block */
@@ -235,7 +295,7 @@
             }
 
             .hero {
-                padding: 80px 0 40px;
+                padding: 56px 0 32px;
             }
 
             .hero h1 {
@@ -246,8 +306,17 @@
                 font-size: 17px;
             }
 
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
             section {
-                padding: 60px 0;
+                padding: 48px 0;
             }
 
             section h2 {
@@ -261,8 +330,8 @@
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
-                <a href="docs.html">Docs</a>
+                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request">GitHub (request access)</a>
+                <a href="pact-docs.pdf" target="_blank">Docs</a>
                 <a href="constitution.html">Constitution</a>
                 <a href="evidence.html" class="active">Evidence</a>
                 <a href="verifier.html">Verifier</a>
@@ -279,6 +348,21 @@
                 <p>Portable, auditor-grade artifacts generated from a Pact transaction.</p>
             </section>
 
+            <div class="content-wrapper">
+                <div class="content-main">
+            <section>
+                <h2>Transcript replay (redacted)</h2>
+                <p class="muted">Documentation-friendly render of transcript verification output.</p>
+
+                <div class="code-block" style="padding:0; margin-top: 40px;">
+                    <img
+                        src="transcript_replay_screenshot.png"
+                        alt="Transcript replay screenshot"
+                        style="width:100%; height:auto; display:block; border-radius:4px;"
+                    />
+                </div>
+            </section>
+
             <section>
                 <h2>What's inside</h2>
                 <ul>
@@ -289,12 +373,6 @@
                     <li>Judgment output (DBL)</li>
                     <li>Metadata (policy hash, version, timestamps)</li>
                 </ul>
-            </section>
-
-            <section>
-                <h2>Admissible vs claimed evidence</h2>
-                <p><strong>Admissible:</strong> Hash-linked + signed + verifier-checkable. Evidence that can be cryptographically verified against the transcript and policy.</p>
-                <p><strong>Claimed:</strong> Anything without transcript linkage (screenshots, logs, emails). These are assertions without cryptographic proof and are not admissible under Pact's rules of evidence.</p>
             </section>
 
             <section>
@@ -314,19 +392,6 @@
                     Download:
                     <a href="redacted_evidence_bundle.json">redacted_evidence_bundle.json</a>
                 </p>
-            </section>
-
-            <section>
-                <h2>Transcript replay (redacted)</h2>
-                <p class="muted">Documentation-friendly render of transcript verification output.</p>
-
-                <div class="code-block" style="padding:0; margin-top: 40px;">
-                    <img
-                        src="transcript_replay_screenshot.png"
-                        alt="Transcript replay screenshot"
-                        style="width:100%; height:auto; display:block; border-radius:4px;"
-                    />
-                </div>
             </section>
 
             <section>
@@ -351,10 +416,33 @@ $ pact bundle --transcript ./.pact/transcripts/transcript-…json --out ./public
             </section>
 
             <section>
+                <h2>Admissible vs claimed evidence</h2>
+                <p><strong>Admissible:</strong> Hash-linked + signed + verifier-checkable. Evidence that can be cryptographically verified against the transcript and policy.</p>
+                <p><strong>Claimed:</strong> Anything without transcript linkage (screenshots, logs, emails). These are assertions without cryptographic proof and are not admissible under Pact's rules of evidence.</p>
+            </section>
+
+            <section>
                 <h2>Integrity + tamper detection</h2>
                 <p>Any modification to a signed transcript breaks the hash chain and invalidates signatures. Evidence bundles include cryptographic proofs that enable independent verification of integrity.</p>
                 <p>Evidence references (hashes, signatures, policy matches) are trusted because they can be verified deterministically. Claims without corresponding evidence refs are not admissible.</p>
             </section>
+                </div>
+
+                <aside class="sidebar">
+                    <h3>Artifacts</h3>
+                    <ul>
+                        <li><a href="redacted_evidence_bundle.json">redacted_evidence_bundle.json</a></li>
+                        <li><a href="cli_output_with_hashes.txt">cli_output_with_hashes.txt</a></li>
+                        <li><a href="transcript_replay_screenshot.png">transcript_replay_screenshot.png</a></li>
+                    </ul>
+
+                    <h3 style="margin-top: 32px;">Related</h3>
+                    <ul>
+                        <li><a href="constitution.html">Constitution</a></li>
+                        <li><a href="verifier.html">Verifier</a></li>
+                    </ul>
+                </aside>
+            </div>
         </main>
 
         <footer>

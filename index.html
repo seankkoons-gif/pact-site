@@ -53,12 +53,20 @@
         }
 
         nav a {
-            color: #9ca3af;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
+            font-size: 12.5px;
+            transition: color 0.2s, opacity 0.2s;
             letter-spacing: 0.01em;
             position: relative;
+        }
+
+        nav a.secondary {
+            opacity: 0.65;
+        }
+
+        nav a.secondary:hover {
+            opacity: 1;
         }
 
         nav a:hover {
@@ -67,6 +75,7 @@
 
         nav a.active {
             color: #ffffff;
+            opacity: 1;
         }
 
         nav a.active::after {
@@ -81,8 +90,8 @@
 
         /* Hero */
         .hero {
-            padding: 100px 0 72px;
-            max-width: 760px;
+            padding: 72px 0 48px;
+            max-width: 900px;
         }
 
         .hero-label {
@@ -97,7 +106,7 @@
         .hero h1 {
             font-size: 52px;
             font-weight: 500;
-            line-height: 1.12;
+            line-height: 1.1;
             margin-bottom: 22px;
             letter-spacing: -0.02em;
         }
@@ -106,6 +115,13 @@
             font-size: 19px;
             color: #d1d5db;
             line-height: 1.65;
+            margin-bottom: 28px;
+        }
+
+        .hero .muted {
+            font-size: 16px;
+            color: #9ca3af;
+            margin-top: -12px;
             margin-bottom: 28px;
         }
 
@@ -141,12 +157,12 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            margin: 80px 0;
+            margin: 48px 0 64px;
         }
 
         .feature-card {
             padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.01);
         }
@@ -167,7 +183,7 @@
 
         /* Sections */
         section {
-            padding: 72px 0;
+            padding: 64px 0;
         }
 
         section h2 {
@@ -181,7 +197,7 @@
             font-size: 17px;
             color: #d1d5db;
             line-height: 1.75;
-            max-width: 720px;
+            max-width: 940px;
         }
 
         section p + p {
@@ -197,9 +213,10 @@
         ul li {
             font-size: 17px;
             color: #d1d5db;
-            line-height: 1.8;
+            line-height: 1.75;
             padding-left: 24px;
             position: relative;
+            max-width: 940px;
         }
 
         ul li::before {
@@ -210,7 +227,7 @@
         }
 
         ul li + li {
-            margin-top: 12px;
+            margin-top: 6px;
         }
 
         /* What Pact is not */
@@ -219,7 +236,7 @@
             padding: 32px;
             background-color: rgba(255, 255, 255, 0.02);
             border-radius: 4px;
-            max-width: 750px;
+            max-width: 940px;
         }
 
         .not-block p {
@@ -328,7 +345,7 @@
             }
 
             .hero {
-                padding: 80px 0 40px;
+                padding: 56px 0 32px;
             }
 
             .hero h1 {
@@ -369,14 +386,14 @@
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
-                <a href="docs.html">Docs</a>
                 <a href="constitution.html">Constitution</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
                 <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://x.com/pact_protocol" target="_blank">X</a>
-                <a href="mailto:sean@dao5.com">Email</a>
+                <a href="pact-docs.pdf" target="_blank" class="secondary">Docs</a>
+                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request" class="secondary">GitHub (request access)</a>
+                <a href="https://x.com/pact_protocol" target="_blank" class="secondary">X</a>
+                <a href="mailto:sean@dao5.com" class="secondary">Email</a>
             </nav>
         </header>
 
@@ -386,6 +403,7 @@
                 <h1>Audit-grade evidence for autonomous agent transactions.</h1>
                 <p>Pact generates cryptographic proof of what autonomous agents agreed to, what executed, and who is responsible when something fails—so transactions are verifiable, replayable, and insurable.</p>
                 <p>Pact is a neutral, rail-agnostic standard for producing evidence—not a marketplace, arbiter, or payment system.</p>
+                <p class="muted">If an agent can act, Pact makes that action accountable.</p>
                 <div class="cta-buttons">
                     <a href="#demo" class="cta-button">Run the demo</a>
                     <a href="constitution.html" class="cta-button">Read the Constitution</a>

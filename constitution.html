@@ -53,12 +53,20 @@
         }
 
         nav a {
-            color: #9ca3af;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
+            font-size: 12.5px;
+            transition: color 0.2s, opacity 0.2s;
             letter-spacing: 0.01em;
             position: relative;
+        }
+
+        nav a.secondary {
+            opacity: 0.65;
+        }
+
+        nav a.secondary:hover {
+            opacity: 1;
         }
 
         nav a:hover {
@@ -67,6 +75,7 @@
 
         nav a.active {
             color: #ffffff;
+            opacity: 1;
         }
 
         nav a.active::after {
@@ -81,12 +90,12 @@
 
         /* Main content */
         main {
-            padding: 80px 0;
+            padding: 56px 0;
         }
 
         .intro {
-            max-width: 760px;
-            margin-bottom: 72px;
+            max-width: 900px;
+            margin-bottom: 48px;
         }
 
         .hero-label {
@@ -103,19 +112,24 @@
             font-weight: 500;
             margin-bottom: 22px;
             letter-spacing: -0.01em;
-            line-height: 1.12;
+            line-height: 1.1;
         }
 
         .intro p {
             font-size: 18px;
             color: #d1d5db;
             line-height: 1.65;
-            max-width: 720px;
+            max-width: 940px;
+        }
+
+        /* Main content */
+        main {
+            padding: 56px 0;
         }
 
         /* Sections */
         section {
-            margin-bottom: 72px;
+            margin-bottom: 48px;
         }
 
         section h2 {
@@ -131,7 +145,7 @@
             color: #d1d5db;
             line-height: 1.75;
             margin-bottom: 20px;
-            max-width: 720px;
+            max-width: 940px;
         }
 
         /* Numbered lists */
@@ -145,10 +159,11 @@
             counter-increment: item;
             font-size: 17px;
             color: #d1d5db;
-            line-height: 1.8;
+            line-height: 1.75;
             padding-left: 36px;
             position: relative;
             margin-bottom: 16px;
+            max-width: 940px;
         }
 
         ol li::before {
@@ -168,10 +183,11 @@
         ul li {
             font-size: 17px;
             color: #d1d5db;
-            line-height: 1.8;
+            line-height: 1.75;
             padding-left: 24px;
             position: relative;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
+            max-width: 940px;
         }
 
         ul li::before {
@@ -232,7 +248,7 @@
             }
 
             main {
-                padding: 60px 0;
+                padding: 48px 0;
             }
 
             .intro h1 {
@@ -254,14 +270,14 @@
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
-                <a href="docs.html">Docs</a>
                 <a href="constitution.html" class="active">Constitution</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
                 <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://x.com/pact_protocol" target="_blank">X</a>
-                <a href="mailto:sean@dao5.com">Email</a>
+                <a href="pact-docs.pdf" target="_blank" class="secondary">Docs</a>
+                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request" class="secondary">GitHub (request access)</a>
+                <a href="https://x.com/pact_protocol" target="_blank" class="secondary">X</a>
+                <a href="mailto:sean@dao5.com" class="secondary">Email</a>
             </nav>
         </header>
 
