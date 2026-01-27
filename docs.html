@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation — pact_</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            background-color: #0a0e1a;
+            color: #ffffff;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+            letter-spacing: 0.01em;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        nav a.active {
+            color: #ffffff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 72px;
+            max-width: 760px;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 1.12;
+            margin-bottom: 22px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #d1d5db;
+            line-height: 1.65;
+            margin-bottom: 28px;
+        }
+
+        /* Sections */
+        section {
+            padding: 72px 0;
+        }
+
+        section h2 {
+            font-size: 34px;
+            font-weight: 500;
+            margin-bottom: 28px;
+            letter-spacing: -0.01em;
+        }
+
+        section h3 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            letter-spacing: -0.01em;
+        }
+
+        section h4 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            margin-top: 32px;
+            color: #ffffff;
+        }
+
+        section p {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.75;
+            max-width: 720px;
+            margin-bottom: 20px;
+        }
+
+        section ul {
+            list-style: none;
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+
+        section ul li {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.75;
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 12px;
+            max-width: 720px;
+        }
+
+        section ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            margin: 32px 0;
+            max-width: 720px;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .comparison-table th {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .comparison-table td {
+            font-size: 15px;
+            color: #d1d5db;
+        }
+
+        /* Code block */
+        .code-block {
+            background-color: #050810;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 28px;
+            margin: 40px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #e5e7eb;
+            margin: 0;
+        }
+
+        .code-block code {
+            font-family: inherit;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        footer .copyright {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        footer .copyright .accent {
+            color: #4fa8ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 32px 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            nav a.active::after {
+                display: none;
+            }
+
+            .hero {
+                padding: 80px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            section h3 {
+                font-size: 20px;
+            }
+
+            section h4 {
+                font-size: 16px;
+            }
+
+            .comparison-table {
+                font-size: 14px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
+            <nav>
+                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                <a href="docs.html" class="active">Docs</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
+                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="mailto:sean@dao5.com">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-label">Documentation</div>
+                <h1>What is pact_?</h1>
+                <p>Pact is the trust infrastructure for AI agents that negotiate, spend money, and make commitments autonomously. It turns agent interactions into cryptographic evidence that is provable, replayable, and auditable in order for companies to safely deploy agents in real-world commerce. If an agent can act, Pact makes that action accountable.</p>
+            </section>
+
+            <section>
+                <h2>The Problem</h2>
+                <p>AI agents are starting to buy APIs and data, negotiate prices and SLAs, trigger payments and act across company boundaries, even buying company data proprietarily.</p>
+                <p>But today, logs are not evidence, payments don't prove intent, failures aren't attributable and legal, compliance, and insurance teams have no visibility into these payments. This makes autonomous agents uninsurable, unauditable, and unsafe at scale.</p>
+                <p>The hard problem isn't payments. What I'm trying to tackle at pact_ is proving who agreed to what, under which constraints, and who's responsible when something breaks. What's missing is a primitive for negotiation, policy enforcement, deterministic outcomes, and evidence-grade accountability.</p>
+            </section>
+
+            <section>
+                <h2>My Solution</h2>
+                <p>Pact is a deterministic negotiation and evidence system for agents. When agents interact through Pact, every negotiation round is signed and hash-linked and policies are enforced in-line. We make settlements binary with either commit or abort results and failures classified deterministically. All transactions generate an evidence bundle automatically and responsibility is assigned via Default Blame Logic automatically as well.</p>
+                <p><strong>Think:</strong></p>
+                <ul>
+                    <li>Stripe for payments</li>
+                    <li>Git for code history</li>
+                    <li>pact_ for agent intent and accountability</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Current System Core Capabilities</h2>
+                <ul>
+                    <li><strong>Proof-of-Negotiation (PoN)</strong> provide cryptographically signed and replayable transcripts</li>
+                    <li><strong>Policy-as-Code (PaC)</strong> enforce price, SLA, reputation, and compliance constraints</li>
+                    <li><strong>Atomic Settlement Boundary</strong> makes sure there are no partial or ambiguous outcomes</li>
+                    <li><strong>Evidence Bundles</strong> are portable artifacts for audit, disputes, and insurance for every transaction</li>
+                    <li><strong>Default Blame Logic</strong> is pact_'s deterministic responsibility assignment</li>
+                    <li><strong>Verifier-Only Tooling</strong> allows auditors to not need SDKs or wallets</li>
+                    <li><strong>Pact Passport</strong> create a verifiable trust derived from real outcomes of these agents and not promises</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>How Developers Use It</h2>
+                <p>Buyer agents wrap high-risk actions (spend, negotiate) inside Pact. Then, provider agents add a thin Pact adapter in front of their service. Enterprises and auditors verify outcomes post-hoc from artifacts alone.</p>
+                <p>Adoption will be incremental because Pact is used only where provability matters, but I see this market being central to transactions in a few years.</p>
+            </section>
+
+            <section>
+                <h2>Business Model</h2>
+                <ul>
+                    <li>Free SDK for adoption</li>
+                    <li>Microscopic coordination fee when Pact-signed transcripts trigger settlement</li>
+                    <li>Paid APIs for reputation, creditworthiness, and trust scoring</li>
+                    <li>Enterprise products for audit, compliance, disputes, and insurance workflows</li>
+                </ul>
+                <p>High-frequency agent interactions × tiny fees = massive scale.</p>
+            </section>
+
+            <section>
+                <h2>Why I think this Scales</h2>
+                <p>There is no custody of funds, no marketplace and most importantly, no competition with payment rails. Pact sits above all agents, rails, and ecosystems.</p>
+                <p>Other companies like Radius and Natural focus on agent execution, task orchestration, tool calling, workflow automation, making agents more capable and autonomous, etc. They answer the question of "How does the agent accomplish this task?"</p>
+                <p>Whereas, Pact answers what exactly was negotiated, who signed which commitments, what constraints were enforced, what failed and whose fault was it, and can a third party verify this without trusting anyone. We produce the necessary cryptographic negotiation transcripts, deterministic replay, evidence bundles, blame judgments, and reputation consequences for that agent's provider.</p>
+                <p>That's not execution — that's institutional trust. Once one counterparty requires Pact transcripts, everyone else must comply.</p>
+            </section>
+
+            <section>
+                <h2>Use Case Example: Autonomous Art Authentication Agent</h2>
+                <h3>Scenario 1:</h3>
+                <p>This scenario is specifically bizarre for a reason to show that pact_ has broad applications. A museum deploys an AI agent tasked with verifying whether a newly surfaced sculpture is an authentic, previously undocumented work by Jeff Koons before committing to a $4.2M acquisition. This is not a single API call but it's a multi-party, high-risk, reputation-sensitive task.</p>
+
+                <h3>What the Agent Must Do Autonomously</h3>
+                <ul>
+                    <li>Purchases high-resolution scans from a private imaging provider</li>
+                    <li>Commissions a materials analysis from a lab agent</li>
+                    <li>Requests stylistic verification from two independent expert-model providers</li>
+                    <li>Negotiates SLAs and pricing for each service</li>
+                    <li>Aggregates results and produces a recommendation</li>
+                </ul>
+
+                <p>Each provider:</p>
+                <ul>
+                    <li>Charges per analysis</li>
+                    <li>Has different confidence levels</li>
+                    <li>Has reputational risk if wrong</li>
+                </ul>
+
+                <h3>Why Pact Is Required</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Without Pact</th>
+                                <th>With Pact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Agreements are informal</td>
+                                <td>Every negotiation is signed and recorded</td>
+                            </tr>
+                            <tr>
+                                <td>SLAs are unenforceable</td>
+                                <td>Every SLA is enforced by policy</td>
+                            </tr>
+                            <tr>
+                                <td>If analysis is wrong, no one can prove responsibility</td>
+                                <td>Every failure has deterministic blame assignment</td>
+                            </tr>
+                            <tr>
+                                <td>The museum bears all risk</td>
+                                <td>Every decision is backed by evidence</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Pact Flow</h3>
+                <h4>Intent Created</h4>
+                <p>"Verify authenticity of sculpture X. Budget ≤ $25,000. Confidence threshold ≥ 92%. All providers must have reputation ≥ A."</p>
+
+                <h4>Negotiation (PoN)</h4>
+                <ul>
+                    <li>Imaging agent quotes $4,000</li>
+                    <li>Materials lab quotes $8,500</li>
+                    <li>Style model quotes $6,000</li>
+                    <li>SLAs and confidence guarantees negotiated</li>
+                    <li>All terms signed and hash-linked</li>
+                </ul>
+
+                <h4>Policy Enforcement</h4>
+                <p>Pact enforces:</p>
+                <ul>
+                    <li>Budget limits</li>
+                    <li>Reputation thresholds</li>
+                    <li>Required redundancy (≥2 independent opinions)</li>
+                </ul>
+
+                <h4>Execution and Settlement</h4>
+                <ul>
+                    <li>Providers deliver analyses</li>
+                    <li>Settlement executes atomically</li>
+                    <li>Late or failed providers are automatically flagged</li>
+                </ul>
+
+                <h4>Evidence Bundle Generated</h4>
+                <p>Pact produces a portable evidence bundle containing:</p>
+                <ul>
+                    <li>All signed negotiations</li>
+                    <li>Provider guarantees</li>
+                    <li>Execution results</li>
+                    <li>Integrity proofs</li>
+                    <li>Confidence aggregation logic</li>
+                </ul>
+
+                <h4>Decision and Accountability</h4>
+                <p>Agent recommends "Acquire" or "Reject"</p>
+                <p>If later challenged, the museum can prove:</p>
+                <ul>
+                    <li>What the agent knew</li>
+                    <li>What was promised</li>
+                    <li>Who was responsible for errors</li>
+                </ul>
+
+                <h3>If Something Goes Wrong</h3>
+                <p>If the sculpture is later proven fake:</p>
+                <p>Pact deterministically identifies:</p>
+                <ul>
+                    <li>Which provider failed</li>
+                    <li>Which guarantee was violated</li>
+                    <li>Whether the agent acted within policy</li>
+                </ul>
+                <p>Evidence can be used for:</p>
+                <ul>
+                    <li>Refunds</li>
+                    <li>Legal claims</li>
+                    <li>Insurance recovery</li>
+                    <li>Reputation penalties</li>
+                </ul>
+                <p>No ambiguity. No finger-pointing.</p>
+            </section>
+
+            <section>
+                <h2>Scenario 2:</h2>
+                <p>A core AI agent is tasked with training a small but critical model update overnight. Instead of trusting a single cloud provider, it shards the job across multiple untrusted compute agents to reduce cost and avoid vendor lock-in. Each compute agent runs arbitrary hardware, charges per millisecond, claims correctness and has asymmetric information.</p>
+
+                <h3>What the Agent Must Coordinate</h3>
+                <p>The orchestrator agent must:</p>
+                <ul>
+                    <li>Negotiate price per FLOP</li>
+                    <li>Enforce max latency and determinism constraints</li>
+                    <li>Require verifiable execution proofs</li>
+                    <li>Handle partial completion and retries</li>
+                    <li>Avoid paying for incorrect or duplicated work</li>
+                </ul>
+
+                <h3>Why Existing Systems Break</h3>
+                <p>Without Pact:</p>
+                <ul>
+                    <li>Payments can happen (x402 / crypto)</li>
+                    <li>Logs exist</li>
+                    <li>Results are returned</li>
+                </ul>
+                <p>But:</p>
+                <ul>
+                    <li>You cannot prove what was agreed</li>
+                    <li>You cannot prove which shard failed</li>
+                    <li>You cannot deterministically assign fault</li>
+                    <li>You cannot replay the execution path</li>
+                    <li>Disputes require humans and guesswork</li>
+                </ul>
+                <p>At scale, this is unworkable.</p>
+
+                <h3>Pact-Backed Flow (Technical)</h3>
+                <h4>Intent Declaration</h4>
+                <p>The agent issues a signed intent:</p>
+                <div class="code-block">
+                    <pre><code>{
+  "task": "model_training_shard",
+  "hash": "abc123…",
+  "budget_per_shard": "≤ $0.002",
+  "latency_ms": "≤ 500",
+  "determinism": "required",
+  "proof": ["execution_trace", "output_hash"],
+  "reputation_min": 0.92
+}</code></pre>
+                </div>
+                <p>This intent becomes the root hash of the Pact transcript.</p>
+
+                <h4>Negotiation (Deterministic Rounds)</h4>
+                <p>Each compute agent responds with:</p>
+                <ul>
+                    <li>price</li>
+                    <li>hardware profile</li>
+                    <li>expected latency</li>
+                    <li>proof type supported</li>
+                </ul>
+                <p>All bids and counters are:</p>
+                <ul>
+                    <li>signed</li>
+                    <li>hash-linked</li>
+                    <li>ordered</li>
+                </ul>
+
+                <h4>Policy Enforcement (Pre-Execution)</h4>
+                <p>Before any compute runs, Pact enforces:</p>
+                <ul>
+                    <li>budget caps</li>
+                    <li>determinism requirements</li>
+                    <li>provider reputation thresholds</li>
+                    <li>redundancy constraints (e.g. 2-of-3 verification)</li>
+                </ul>
+                <p>Violations abort before money or compute is wasted.</p>
+
+                <h4>Settlement Authorization (Not Execution)</h4>
+                <p>Pact authorizes settlement conditionally:</p>
+                <p>"Payment is valid if output hash matches intent-derived expectation."</p>
+                <p>This is critical: settlement is gated by evidence, not trust.</p>
+
+                <h4>Execution and Evidence Emission</h4>
+                <p>Compute agents execute and return:</p>
+                <ul>
+                    <li>output shard</li>
+                    <li>execution trace hash</li>
+                    <li>timing proofs</li>
+                </ul>
+                <p>Each submission is attached to the transcript as evidence.</p>
+
+                <h4>Deterministic Outcome Resolution</h4>
+                <p>Pact:</p>
+                <ul>
+                    <li>Verifies hashes</li>
+                    <li>Checks SLA timing</li>
+                    <li>Matches execution to negotiated terms</li>
+                </ul>
+                <p>Possible outcomes:</p>
+                <ul>
+                    <li>✅ Valid → settlement commits</li>
+                    <li>❌ Invalid output → abort + blame</li>
+                    <li>⏱ Timeout → classified failure</li>
+                </ul>
+
+                <h4>Default Blame Logic (DBL)</h4>
+                <p>If a shard is wrong or late:</p>
+                <ul>
+                    <li>Pact identifies the last valid signed commitment</li>
+                    <li>Assigns fault deterministically</li>
+                    <li>Emits a signed judgment artifact</li>
+                </ul>
+                <p>This artifact can be:</p>
+                <ul>
+                    <li>Used for refunds</li>
+                    <li>Fed into reputation</li>
+                    <li>Consumed by insurers</li>
+                    <li>Audited later without trusting the system operator</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Vision</h2>
+                <p>If your agent can spend money, make commitments, or act autonomously, it must run inside a Pact boundary.</p>
+                <p>Pact is the accountability layer that makes autonomous commerce possible.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>
