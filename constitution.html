@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pact Constitution (v1) — pact_</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            background-color: #0a0e1a;
+            color: #ffffff;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Main content */
+        main {
+            padding: 80px 0;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin-bottom: 80px;
+        }
+
+        .intro h1 {
+            font-size: 42px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .intro p {
+            font-size: 18px;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 80px;
+        }
+
+        section h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+            color: #ffffff;
+        }
+
+        section p {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-width: 750px;
+        }
+
+        /* Numbered lists */
+        ol {
+            list-style: none;
+            counter-reset: item;
+            margin-top: 20px;
+        }
+
+        ol li {
+            counter-increment: item;
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            padding-left: 36px;
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        ol li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+            font-weight: 500;
+        }
+
+        /* Bullet lists */
+        ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        ul li {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+        }
+
+        /* Definition terms */
+        .definition-term {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        footer .copyright {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        footer .copyright .accent {
+            color: #4fa8ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 32px 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            main {
+                padding: 60px 0;
+            }
+
+            .intro h1 {
+                font-size: 32px;
+            }
+
+            section {
+                margin-bottom: 60px;
+            }
+
+            section h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="assets/pact-logo.png" alt="pact_"></a>
+            <nav>
+                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                <a href="https://YOUR_DOCS_URL" target="_blank">Docs</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
+                <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
+                <a href="mailto:hello@pact.xyz">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="intro">
+                <h1>Pact Constitution (v1)</h1>
+                <p>This document defines the minimum rules for evidence, integrity, and responsibility attribution for Pact-generated transactions. It is written for auditors, legal, risk, and engineering teams.</p>
+                <p>This constitution governs only the generation, verification, and interpretation of Pact evidence. It does not govern commercial terms, pricing, or off-chain enforcement.</p>
+            </div>
+
+            <section>
+                <h2>Definitions</h2>
+                <ol>
+                    <li><span class="definition-term">Transcript:</span> A chronologically ordered, hash-linked sequence of signed negotiation rounds between agents.</li>
+                    <li><span class="definition-term">Round:</span> A single negotiation step containing agent messages, policy checks, and cryptographic signatures.</li>
+                    <li><span class="definition-term">Evidence Bundle:</span> A portable collection containing the transcript, verification artifacts, and metadata required for audit or dispute resolution.</li>
+                    <li><span class="definition-term">Integrity:</span> The property that a transcript's hash chain is unbroken and all signatures are valid.</li>
+                    <li><span class="definition-term">Settlement Attempt:</span> An execution event where agents attempt to fulfill the terms recorded in the transcript.</li>
+                    <li><span class="definition-term">Failure Event:</span> A settlement attempt that does not complete successfully or violates policy.</li>
+                    <li><span class="definition-term">Judgment:</span> The deterministic output of Default Blame Logic (DBL) assigning responsibility for a failure event.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Rules of Evidence</h2>
+                <ol>
+                    <li>Every negotiation round must be signed by all participating agents before the next round begins.</li>
+                    <li>Each round must include a hash reference to the previous round, forming an unbroken chain from the first round to the last.</li>
+                    <li>Evidence is admissible only if it contains a complete, verifiable transcript with valid signatures and hash chain.</li>
+                    <li>Claims without corresponding signed transcript entries are not admissible as evidence.</li>
+                    <li>Any modification to a signed transcript breaks the hash chain and must be detectable by verification.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Verification Requirements</h2>
+                <ol>
+                    <li>A verifier must validate all cryptographic signatures in the transcript.</li>
+                    <li>A verifier must validate the hash chain integrity (each round's hash matches the previous round's output).</li>
+                    <li>Deterministic replay must produce the same transcript checks when given the same inputs and policy.</li>
+                    <li>Verification must output a binary result: PASS (all checks valid) or FAIL (any check invalid) with specific reasons for failure.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Default Blame Logic (DBL) — high level</h2>
+                <p>DBL assigns responsibility using the last valid signed state and policy timing. It examines the transcript to determine which agent's actions (or inactions) led to the failure event, based on policy rules and timing constraints.</p>
+                <p><span class="definition-term">NO_FAULT:</span> The failure event cannot be attributed to any agent's violation of policy or timing requirements as recorded in the transcript.</p>
+                <p><span class="definition-term">RESPONSIBLE_ACTOR:</span> The agent identified by DBL as having violated policy, missed a timing requirement, or failed to execute a required action as specified in the signed transcript.</p>
+                <p>DBL may be extended by explicit policy or arbitration modules, but must always remain deterministic and evidence-constrained.</p>
+            </section>
+
+            <section>
+                <h2>Failure Taxonomy</h2>
+                <ul>
+                    <li>Policy aborts: An agent's action violates the agreed policy rules.</li>
+                    <li>Identity/credential failures: An agent cannot prove its identity or authorization as required by policy.</li>
+                    <li>Negotiation deadlocks/timeouts: Agents fail to reach agreement within policy-defined time limits.</li>
+                    <li>Settlement failures: Execution of the agreed terms fails at the payment or service delivery layer.</li>
+                    <li>Evidence integrity failures: The transcript or evidence bundle fails verification checks.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Non-goals</h2>
+                <ul>
+                    <li>Pact does not judge "truth" of off-chain claims without evidence.</li>
+                    <li>Pact does not replace payments.</li>
+                    <li>Pact does not resolve all disputes without agreed arbitration policy.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>

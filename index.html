@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pact_</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            background-color: #0a0e1a;
+            color: #ffffff;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 60px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .cta-button {
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            border-radius: 4px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .cta-button:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        section h2 {
+            font-size: 34px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        section p {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            max-width: 750px;
+        }
+
+        section p + p {
+            margin-top: 20px;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        ul li {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+        }
+
+        ul li + li {
+            margin-top: 12px;
+        }
+
+        /* What Pact is not */
+        .not-block {
+            margin-top: 40px;
+            padding: 32px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+            max-width: 750px;
+        }
+
+        .not-block p {
+            font-size: 16px;
+            color: #9ca3af;
+            margin-top: 16px;
+        }
+
+        /* Code block */
+        .code-block {
+            background-color: #050810;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 24px;
+            margin: 32px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e5e7eb;
+            margin: 0;
+        }
+
+        .code-block code {
+            font-family: inherit;
+        }
+
+        .code-block .comment {
+            color: #6b7280;
+        }
+
+        /* Artifacts list */
+        .artifacts {
+            margin-top: 24px;
+        }
+
+        .artifacts li {
+            font-size: 16px;
+        }
+
+        /* Who it's for */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .who-item h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .who-item p {
+            font-size: 16px;
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        footer .copyright {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        footer .copyright .accent {
+            color: #4fa8ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 32px 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 80px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .who-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="assets/pact-logo.png" alt="pact_"></a>
+            <nav>
+                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                <a href="https://YOUR_DOCS_URL" target="_blank">Docs</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
+                <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
+                <a href="mailto:hello@pact.xyz">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Audit-grade evidence for autonomous agent transactions.</h1>
+                <p>Pact generates cryptographic proof of what autonomous agents agreed to, what executed, and who is responsible when something fails—so transactions are verifiable, replayable, and insurable.</p>
+                <p>Pact is a neutral, rail-agnostic standard for producing evidence—not a marketplace, arbiter, or payment system.</p>
+                <div class="cta-buttons">
+                    <a href="#demo" class="cta-button">Run the demo</a>
+                    <a href="constitution.html" class="cta-button">Read the Constitution</a>
+                </div>
+            </section>
+
+            <section>
+                <h2>Why this exists</h2>
+                <p>Agent workflows create real financial and operational risk. Traditional logs are mutable and non-standard. When failures happen, the question becomes: "What is the evidence?" and "Who is responsible?"</p>
+            </section>
+
+            <section>
+                <h2>What Pact does</h2>
+                <ul>
+                    <li>Signed, hash-linked negotiation transcripts (Proof of Negotiation)</li>
+                    <li>Deterministic replay and verification</li>
+                    <li>Evidence bundles with integrity checks (auditor-ready)</li>
+                    <li>Default Blame Logic (DBL) to attribute responsibility from the signed record</li>
+                </ul>
+                <div class="not-block">
+                    <p><strong>What Pact is not:</strong></p>
+                    <ul>
+                        <li>Not a marketplace</li>
+                        <li>Not a payment rail / processor</li>
+                        <li>Not a coordination DAO</li>
+                    </ul>
+                    <p>It sits above existing rails and focuses on evidence, not execution.</p>
+                </div>
+            </section>
+
+            <section id="demo">
+                <h2>CLI demo</h2>
+                <div class="code-block">
+                    <pre><code><span class="comment"># Install dependencies</span>
+pnpm install
+
+<span class="comment"># Run canonical demo negotiation</span>
+tsx demo/negotiate.ts --policy ./policies/default.json
+
+<span class="comment"># Verify transcript integrity</span>
+pact replay --transcript ./artifacts/transcript.json
+
+<span class="comment"># Generate evidence bundle</span>
+pact bundle --transcript ./artifacts/transcript.json --output ./artifacts/bundle.json
+
+<span class="comment"># Run blame judgment</span>
+pact judge --bundle ./artifacts/bundle.json --failure-event settlement_timeout
+
+<span class="comment"># Outputs: signed transcript, verification result, evidence bundle, judgment</span></code></pre>
+                </div>
+                <ul class="artifacts">
+                    <li>Transcript (signed + hash chain)</li>
+                    <li>Evidence bundle (portable)</li>
+                    <li>Judgment (responsibility trace)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Who it's for</h2>
+                <div class="who-grid">
+                    <div class="who-item">
+                        <h3>Developers</h3>
+                        <p>Ship agent commerce without inventing dispute systems.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Security/Risk</h3>
+                        <p>Reduce blast radius with deterministic evidence.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>General Counsel / Audit / Insurers</h3>
+                        <p>Approve and underwrite autonomous workflows.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>

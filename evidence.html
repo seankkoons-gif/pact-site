@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence Bundle — pact_</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            background-color: #0a0e1a;
+            color: #ffffff;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 60px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        section h2 {
+            font-size: 34px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        section p {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            max-width: 750px;
+        }
+
+        section p + p {
+            margin-top: 20px;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        ul li {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+        }
+
+        ul li + li {
+            margin-top: 12px;
+        }
+
+        /* Code block */
+        .code-block {
+            background-color: #050810;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 24px;
+            margin: 32px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #e5e7eb;
+            margin: 0;
+        }
+
+        .code-block code {
+            font-family: inherit;
+        }
+
+        .muted {
+            color: #9ca3af;
+        }
+
+        .muted a {
+            color: #d1d5db;
+        }
+
+        .muted a:hover {
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        footer .copyright {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        footer .copyright .accent {
+            color: #4fa8ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 32px 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 80px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="assets/pact-logo.png" alt="pact_"></a>
+            <nav>
+                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                <a href="https://YOUR_DOCS_URL" target="_blank">Docs</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
+                <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
+                <a href="mailto:hello@pact.xyz">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Evidence Bundles</h1>
+                <p>Portable, auditor-grade artifacts generated from a Pact transaction.</p>
+            </section>
+
+            <section>
+                <h2>What's inside</h2>
+                <ul>
+                    <li>Signed transcript</li>
+                    <li>Verification report (PASS/FAIL + reasons)</li>
+                    <li>Settlement attempt records</li>
+                    <li>Failure events (if any)</li>
+                    <li>Judgment output (DBL)</li>
+                    <li>Metadata (policy hash, version, timestamps)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Admissible vs claimed evidence</h2>
+                <p><strong>Admissible:</strong> Hash-linked + signed + verifier-checkable. Evidence that can be cryptographically verified against the transcript and policy.</p>
+                <p><strong>Claimed:</strong> Anything without transcript linkage (screenshots, logs, emails). These are assertions without cryptographic proof and are not admissible under Pact's rules of evidence.</p>
+            </section>
+
+            <section>
+                <h2>Redacted evidence bundle</h2>
+                <p class="muted">Public-safe example. All identifiers are redacted; structure is representative.</p>
+
+                <div class="code-block">
+                    <pre><code>{
+  "bundle_version": "pact-evidence/1.0",
+  "transcript": { "schema": "pact-transcript/4.0", "rounds": 3, "final_hash": "0x8b2c…3c4d" },
+  "verification": { "status": "PASS", "checks": ["signatures","hash_chain","policy_hash_match"] },
+  "judgment": { "result": "NO_FAULT", "confidence": 1.0 }
+}</code></pre>
+                </div>
+
+                <p class="muted">
+                    Download:
+                    <a href="public/redacted_evidence_bundle.json">redacted_evidence_bundle.json</a>
+                </p>
+            </section>
+
+            <section>
+                <h2>Transcript replay (redacted)</h2>
+                <p class="muted">Documentation-friendly render of transcript verification output.</p>
+
+                <div class="code-block" style="padding:0;">
+                    <img
+                        src="public/transcript_replay_screenshot.svg"
+                        alt="Transcript replay screenshot"
+                        style="width:100%; height:auto; display:block; border-radius:4px;"
+                    />
+                </div>
+            </section>
+
+            <section>
+                <h2>CLI output snippet with hashes</h2>
+                <p class="muted">What an auditor or third party can independently reproduce.</p>
+
+                <div class="code-block">
+                    <pre><code>$ pact replay --transcript ./.pact/transcripts/transcript-…json
+[pact-replay] schema: pact-transcript/4.0
+[pact-replay] integrity: VALID
+[pact-replay] final_hash: 0x8b2c4d8a0f6e3a1c…a2b3c4d
+
+$ pact bundle --transcript ./.pact/transcripts/transcript-…json --out ./public/redacted_evidence_bundle.json
+[pact-bundle] policy_hash:        0x4f0a7c9d2e1b…234567
+[pact-bundle] constitution_hash:  0x1c9f2d3b7a0e…7d6e5</code></pre>
+                </div>
+
+                <p class="muted">
+                    Download:
+                    <a href="public/cli_output_with_hashes.txt">cli_output_with_hashes.txt</a>
+                </p>
+            </section>
+
+            <section>
+                <h2>Integrity + tamper detection</h2>
+                <p>Any modification to a signed transcript breaks the hash chain and invalidates signatures. Evidence bundles include cryptographic proofs that enable independent verification of integrity.</p>
+                <p>Evidence references (hashes, signatures, policy matches) are trusted because they can be verified deterministically. Claims without corresponding evidence refs are not admissible.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>

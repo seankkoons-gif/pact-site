@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case: Autonomous API Procurement — pact_</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            background-color: #0a0e1a;
+            color: #ffffff;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 28px;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 60px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #d1d5db;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        section h2 {
+            font-size: 34px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        section p {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            max-width: 750px;
+        }
+
+        section p + p {
+            margin-top: 20px;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-top: 24px;
+        }
+
+        ul li {
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+        }
+
+        ul li + li {
+            margin-top: 12px;
+        }
+
+        /* Numbered lists */
+        ol {
+            list-style: none;
+            counter-reset: item;
+            margin-top: 24px;
+        }
+
+        ol li {
+            counter-increment: item;
+            font-size: 17px;
+            color: #d1d5db;
+            line-height: 1.8;
+            padding-left: 36px;
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        ol li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+            font-weight: 500;
+        }
+
+        /* Scenario cards */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .scenario-card {
+            padding: 32px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border-radius: 4px;
+        }
+
+        .scenario-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .scenario-card p {
+            font-size: 16px;
+            color: #d1d5db;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .scenario-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scenario-card .code {
+            font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 14px;
+            color: #4fa8ff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 100px;
+        }
+
+        footer p {
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+
+        footer .copyright {
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        footer .copyright .accent {
+            color: #4fa8ff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 32px 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 80px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
+            <nav>
+                <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
+                <a href="https://YOUR_DOCS_URL" target="_blank">Docs</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
+                <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
+                <a href="mailto:hello@pact.xyz">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Autonomous API Procurement</h1>
+                <p>A buyer-agent purchases an API response from a provider-agent under policy.</p>
+            </section>
+
+            <section>
+                <h2>Actors</h2>
+                <ul>
+                    <li><strong>Buyer agent:</strong> Autonomous agent seeking to purchase API access</li>
+                    <li><strong>Provider agent:</strong> Autonomous agent offering API services</li>
+                    <li><strong>Settlement provider:</strong> Rail-agnostic payment or escrow system</li>
+                    <li><strong>Verifier:</strong> Third party that can independently verify evidence bundles</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Flow</h2>
+                <ol>
+                    <li>Buyer sends intent to purchase API response with specified parameters</li>
+                    <li>Provider asks price and terms (rate limits, SLA, payment method)</li>
+                    <li>Buyer accepts terms, both agents sign the negotiation transcript</li>
+                    <li>Settlement executes through the chosen payment rail (Stripe, escrow, crypto)</li>
+                    <li>Evidence bundle is generated containing signed transcript, verification report, settlement records, and judgment (if failure occurred)</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Scenarios</h2>
+                <div class="scenario-grid">
+                    <div class="scenario-card">
+                        <h3>Success</h3>
+                        <p>Transaction completes successfully. Provider delivers API response, buyer receives it, settlement confirms payment.</p>
+                        <p><strong>Artifacts:</strong> Signed transcript, verification report (PASS), settlement confirmation, evidence bundle.</p>
+                        <p><strong>DBL:</strong> <span class="code">NO_FAULT</span> — no failure event occurred.</p>
+                    </div>
+                    <div class="scenario-card">
+                        <h3>Policy abort <span class="code">PACT-101</span></h3>
+                        <p>Provider attempts to charge above agreed price or violates rate limit policy. Negotiation aborts before settlement.</p>
+                        <p><strong>Artifacts:</strong> Signed transcript up to abort point, verification report (FAIL), evidence bundle.</p>
+                        <p><strong>DBL:</strong> <span class="code">RESPONSIBLE_ACTOR: provider</span> — policy violation detected in signed transcript.</p>
+                    </div>
+                    <div class="scenario-card">
+                        <h3>Timeout <span class="code">PACT-404</span></h3>
+                        <p>Buyer accepts terms, settlement initiates, but provider fails to deliver API response within policy-defined timeout window.</p>
+                        <p><strong>Artifacts:</strong> Signed transcript, verification report (PASS), settlement attempt record, failure event, evidence bundle.</p>
+                        <p><strong>DBL:</strong> <span class="code">RESPONSIBLE_ACTOR: provider</span> — missed delivery deadline per signed agreement.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Why this matters</h2>
+                <ul>
+                    <li><strong>Procurement becomes auditable:</strong> Every transaction produces verifiable evidence that can be reviewed by auditors, legal teams, or insurers</li>
+                    <li><strong>Disputes become evidence-first:</strong> Instead of he-said-she-said, disputes are resolved using cryptographically signed transcripts and deterministic blame logic</li>
+                    <li><strong>Insurers can underwrite behavior:</strong> Evidence bundles enable risk assessment and insurance products for autonomous agent transactions</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>
