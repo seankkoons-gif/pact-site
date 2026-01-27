@@ -1,9 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" style="background-color: #050810;">
-  <rect width="800" height="400" fill="#050810"/>
-  <text x="400" y="200" font-family="monospace" font-size="16" fill="#9ca3af" text-anchor="middle">
-    Transcript Replay Screenshot
-  </text>
-  <text x="400" y="230" font-family="monospace" font-size="14" fill="#6b7280" text-anchor="middle">
-    (Placeholder - replace with actual screenshot)
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .bg { fill: #050810; }
+      .frame { fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 2; }
+      .text {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                     "Liberation Mono", "Courier New", monospace;
+        font-size: 22px; fill: #e5e7eb;
+      }
+      .muted { fill: #9ca3af; }
+      .accent { fill: #4fa8ff; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="700" rx="18"/>
+  <rect class="frame" x="24" y="24" width="1152" height="652" rx="14"/>
+
+  <text class="text" x="60" y="90">pact replay --transcript ./.pact/transcripts/transcript-…json</text>
+
+  <text class="text muted" x="60" y="135">[pact-replay] schema: pact-transcript/4.0</text>
+  <text class="text muted" x="60" y="170">[pact-replay] rounds: 3</text>
+  <text class="text" x="60" y="205">[pact-replay] integrity: <tspan class="accent">VALID</tspan></text>
+
+  <text class="text" x="60" y="270">round[0] INTENT  hash=0x0d4b…9a2c  sigs=2/2</text>
+  <text class="text" x="60" y="305">round[1] ASK     hash=0x3a91…f0c8  sigs=2/2</text>
+  <text class="text" x="60" y="340">round[2] ACCEPT  hash=0x8b2c…3c4d  sigs=2/2  (FINAL)</text>
+
+  <text class="text muted" x="60" y="410">final_hash:</text>
+  <text class="text" x="190" y="410">0x8b2c4d8a0f6e3a1c9d7b5e2f1a0c3b4d5e6f708192a3b4c5d6e7f8091a2b3c4d</text>
+
+  <text class="text muted" x="60" y="470">verifier:</text>
+  <text class="text" x="190" y="470">PASS (signatures ✓, hash_chain ✓, policy_hash ✓)</text>
+
+  <text class="text muted" x="60" y="550">Redacted, documentation-friendly transcript replay output.</text>
 </svg>

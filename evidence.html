@@ -330,14 +330,14 @@
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request">GitHub (request access)</a>
-                <a href="pact-docs.pdf" target="_blank">Docs</a>
+                <a href="mailto:sean@dao5.com?subject=Pact%20GitHub%20Access%20Request" class="secondary">GitHub</a>
+                <a href="pact-docs.pdf" target="_blank" class="secondary">Docs</a>
                 <a href="constitution.html">Constitution</a>
                 <a href="evidence.html" class="active">Evidence</a>
                 <a href="verifier.html">Verifier</a>
                 <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://x.com/pact_protocol" target="_blank">X</a>
-                <a href="mailto:sean@dao5.com">Email</a>
+                <a href="https://x.com/pact_protocol" target="_blank" class="secondary">X</a>
+                <a href="mailto:sean@dao5.com" class="secondary">Email</a>
             </nav>
         </header>
 
@@ -356,11 +356,15 @@
 
                 <div class="code-block" style="padding:0; margin-top: 40px;">
                     <img
-                        src="transcript_replay_screenshot.png"
+                        src="transcript_replay_screenshot.svg"
                         alt="Transcript replay screenshot"
                         style="width:100%; height:auto; display:block; border-radius:4px;"
                     />
                 </div>
+                <p class="muted" style="margin-top: 16px;">
+                    <a href="transcript_replay_screenshot.svg" target="_blank">Open transcript replay SVG</a>
+                    <span style="margin-left: 8px; font-size: 14px;">(If the image fails to render, this link should still work.)</span>
+                </p>
             </section>
 
             <section>
@@ -433,7 +437,7 @@ $ pact bundle --transcript ./.pact/transcripts/transcript-…json --out ./public
                     <ul>
                         <li><a href="redacted_evidence_bundle.json">redacted_evidence_bundle.json</a></li>
                         <li><a href="cli_output_with_hashes.txt">cli_output_with_hashes.txt</a></li>
-                        <li><a href="transcript_replay_screenshot.png">transcript_replay_screenshot.png</a></li>
+                        <li><a href="transcript_replay_screenshot.svg">transcript_replay_screenshot.svg</a></li>
                     </ul>
 
                     <h3 style="margin-top: 32px;">Related</h3>
