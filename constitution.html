@@ -47,19 +47,36 @@
 
         nav {
             display: flex;
-            gap: 32px;
+            gap: 40px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         nav a {
             color: #9ca3af;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 13px;
             transition: color 0.2s;
+            letter-spacing: 0.01em;
+            position: relative;
         }
 
         nav a:hover {
             color: #ffffff;
+        }
+
+        nav a.active {
+            color: #ffffff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
         }
 
         /* Main content */
@@ -68,26 +85,37 @@
         }
 
         .intro {
-            max-width: 800px;
-            margin-bottom: 80px;
+            max-width: 760px;
+            margin-bottom: 72px;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 18px;
         }
 
         .intro h1 {
             font-size: 42px;
             font-weight: 500;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
             letter-spacing: -0.01em;
+            line-height: 1.12;
         }
 
         .intro p {
             font-size: 18px;
             color: #d1d5db;
-            line-height: 1.8;
+            line-height: 1.65;
+            max-width: 720px;
         }
 
         /* Sections */
         section {
-            margin-bottom: 80px;
+            margin-bottom: 72px;
         }
 
         section h2 {
@@ -101,9 +129,9 @@
         section p {
             font-size: 17px;
             color: #d1d5db;
-            line-height: 1.8;
+            line-height: 1.75;
             margin-bottom: 20px;
-            max-width: 750px;
+            max-width: 720px;
         }
 
         /* Numbered lists */
@@ -196,7 +224,11 @@
 
             nav {
                 flex-wrap: wrap;
-                gap: 20px;
+                gap: 24px;
+            }
+
+            nav a.active::after {
+                display: none;
             }
 
             main {
@@ -224,17 +256,18 @@
             <nav>
                 <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
                 <a href="https://YOUR_DOCS_URL" target="_blank">Docs</a>
-                <a href="constitution.html">Constitution</a>
+                <a href="constitution.html" class="active">Constitution</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
                 <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
-                <a href="mailto:hello@pact.xyz">Email</a>
+                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="mailto:sean@dao5.com">Email</a>
             </nav>
         </header>
 
         <main>
             <div class="intro">
+                <div class="hero-label">Constitution</div>
                 <h1>Pact Constitution (v1)</h1>
                 <p>This document defines the minimum rules for evidence, integrity, and responsibility attribution for Pact-generated transactions. It is written for auditors, legal, risk, and engineering teams.</p>
                 <p>This constitution governs only the generation, verification, and interpretation of Pact evidence. It does not govern commercial terms, pricing, or off-chain enforcement.</p>

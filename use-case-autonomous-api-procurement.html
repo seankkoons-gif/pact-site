@@ -47,59 +47,85 @@
 
         nav {
             display: flex;
-            gap: 32px;
+            gap: 40px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         nav a {
             color: #9ca3af;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 13px;
             transition: color 0.2s;
+            letter-spacing: 0.01em;
+            position: relative;
         }
 
         nav a:hover {
             color: #ffffff;
         }
 
+        nav a.active {
+            color: #ffffff;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
         /* Hero */
         .hero {
-            padding: 120px 0 60px;
-            max-width: 800px;
+            padding: 100px 0 72px;
+            max-width: 760px;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 18px;
         }
 
         .hero h1 {
             font-size: 52px;
             font-weight: 500;
-            line-height: 1.2;
-            margin-bottom: 24px;
+            line-height: 1.12;
+            margin-bottom: 22px;
             letter-spacing: -0.02em;
         }
 
         .hero p {
             font-size: 19px;
             color: #d1d5db;
-            line-height: 1.8;
-            margin-bottom: 40px;
+            line-height: 1.65;
+            margin-bottom: 28px;
         }
 
         /* Sections */
         section {
-            padding: 100px 0;
+            padding: 72px 0;
         }
 
         section h2 {
             font-size: 34px;
             font-weight: 500;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             letter-spacing: -0.01em;
         }
 
         section p {
             font-size: 17px;
             color: #d1d5db;
-            line-height: 1.8;
-            max-width: 750px;
+            line-height: 1.75;
+            max-width: 720px;
         }
 
         section p + p {
@@ -229,7 +255,11 @@
             }
 
             nav {
-                gap: 20px;
+                gap: 24px;
+            }
+
+            nav a.active::after {
+                display: none;
             }
 
             .hero {
@@ -269,14 +299,15 @@
                 <a href="constitution.html">Constitution</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
-                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://twitter.com/YOUR_TWITTER" target="_blank">Twitter</a>
-                <a href="mailto:hello@pact.xyz">Email</a>
+                <a href="use-case-autonomous-api-procurement.html" class="active">Use Case</a>
+                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="mailto:sean@dao5.com">Email</a>
             </nav>
         </header>
 
         <main>
             <section class="hero">
+                <div class="hero-label">Use Case</div>
                 <h1>Autonomous API Procurement</h1>
                 <p>A buyer-agent purchases an API response from a provider-agent under policy.</p>
             </section>
