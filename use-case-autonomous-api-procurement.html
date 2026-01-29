@@ -90,6 +90,18 @@
         .hero {
             padding: 32px 0 48px;
             max-width: 900px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            right: -40px;
+            top: -24px;
+            bottom: -24px;
+            background: linear-gradient(180deg, rgba(5, 8, 16, 0.6) 0%, rgba(10, 14, 26, 0.4) 50%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .hero-label {
@@ -116,9 +128,76 @@
             margin-bottom: 28px;
         }
 
+        .hero-spine {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-top: 24px;
+            letter-spacing: 0.02em;
+        }
+        .hero-spine span {
+            margin: 0 4px;
+            opacity: 0.8;
+        }
+
         /* Main content */
         main {
+            position: relative;
             padding: 24px 0;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+        }
+
+        /* Why this exists */
+        .why-this-exists {
+            padding: 20px 24px;
+            margin: 0 0 40px;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+        .why-this-exists .why-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 14px;
+        }
+        .why-this-exists ul {
+            margin: 0 0 12px;
+            padding-left: 20px;
+            list-style: disc;
+        }
+        .why-this-exists ul li {
+            font-size: 15px;
+            color: #d1d5db;
+            line-height: 1.5;
+            margin-bottom: 4px;
+            max-width: none;
+        }
+        .why-this-exists ul li::before {
+            display: none;
+        }
+        .why-this-exists p {
+            font-size: 15px;
+            color: #d1d5db;
+            margin: 0 0 8px;
+        }
+        .why-this-exists p:last-child {
+            color: #e5e7eb;
+            margin: 14px 0 0;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* Sections */
@@ -222,6 +301,11 @@
             margin-bottom: 12px;
         }
 
+        .scenario-card p.scenario-stakes {
+            color: #e5e7eb;
+            margin-bottom: 14px;
+        }
+
         .scenario-card p:last-child {
             margin-bottom: 0;
         }
@@ -320,10 +404,30 @@
 
         <main>
             <section class="hero">
-                <div class="hero-label">Use Case</div>
                 <h1>Autonomous API Procurement</h1>
                 <p>A buyer-agent purchases an API response from a provider-agent under policy.</p>
+                <p>This is the simplest transaction that breaks companies when something goes wrong—unless evidence is first-class.</p>
+                <p class="hero-spine">Intent <span>→</span> Negotiation <span>→</span> Policy <span>→</span> Settlement <span>→</span> Evidence <span>→</span> Blame</p>
             </section>
+
+            <div class="why-this-exists">
+                <div class="why-label">Why this exists</div>
+                <p>Autonomous agents can now:</p>
+                <ul>
+                    <li>negotiate contracts</li>
+                    <li>trigger payments</li>
+                    <li>commit capital</li>
+                    <li>act across organizational boundaries</li>
+                </ul>
+                <p>But today:</p>
+                <ul>
+                    <li>logs are mutable</li>
+                    <li>payments prove nothing about intent</li>
+                    <li>failures are ambiguous</li>
+                    <li>responsibility cannot be proven</li>
+                </ul>
+                <p>Pact exists because autonomous systems cannot scale without evidence.</p>
+            </div>
 
             <section>
                 <h2>Actors</h2>
@@ -351,18 +455,21 @@
                 <div class="scenario-grid">
                     <div class="scenario-card">
                         <h3>Success</h3>
+                        <p class="scenario-stakes">When this works, no one asks for proof—until something doesn't.</p>
                         <p>Transaction completes successfully. Provider delivers API response, buyer receives it, settlement confirms payment.</p>
                         <p><strong>Artifacts:</strong> Signed transcript, verification report (PASS), settlement confirmation, evidence bundle.</p>
                         <p><strong>DBL:</strong> <span class="code">NO_FAULT</span> — no failure event occurred.</p>
                     </div>
                     <div class="scenario-card">
                         <h3>Policy abort <span class="code">PACT-101</span></h3>
+                        <p class="scenario-stakes">This is the type of transaction that breaks companies when something goes wrong.</p>
                         <p>Provider attempts to charge above agreed price or violates rate limit policy. Negotiation aborts before settlement.</p>
                         <p><strong>Artifacts:</strong> Signed transcript up to abort point, verification report (FAIL), evidence bundle.</p>
                         <p><strong>DBL:</strong> <span class="code">RESPONSIBLE_ACTOR: provider</span> — policy violation detected in signed transcript.</p>
                     </div>
                     <div class="scenario-card">
                         <h3>Timeout <span class="code">PACT-404</span></h3>
+                        <p class="scenario-stakes">When the provider goes silent, the only proof of what was agreed is the transcript.</p>
                         <p>Buyer accepts terms, settlement initiates, but provider fails to deliver API response within policy-defined timeout window.</p>
                         <p><strong>Artifacts:</strong> Signed transcript, verification report (PASS), settlement attempt record, failure event, evidence bundle.</p>
                         <p><strong>DBL:</strong> <span class="code">RESPONSIBLE_ACTOR: provider</span> — missed delivery deadline per signed agreement.</p>
@@ -376,6 +483,16 @@
                     <li><strong>Procurement becomes auditable:</strong> Every transaction produces verifiable evidence that can be reviewed by auditors, legal teams, or insurers</li>
                     <li><strong>Disputes become evidence-first:</strong> Instead of he-said-she-said, disputes are resolved using cryptographically signed transcripts and deterministic blame logic</li>
                     <li><strong>Insurers can underwrite behavior:</strong> Evidence bundles enable risk assessment and insurance products for autonomous agent transactions</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Outputs you can verify</h2>
+                <ul>
+                    <li>Transcript hash</li>
+                    <li>Policy hash</li>
+                    <li>Verifier PASS/FAIL</li>
+                    <li>Judgment output</li>
                 </ul>
             </section>
         </main>

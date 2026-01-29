@@ -90,6 +90,18 @@
         .hero {
             padding: 32px 0 48px;
             max-width: 900px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            right: -40px;
+            top: -24px;
+            bottom: -24px;
+            background: linear-gradient(180deg, rgba(5, 8, 16, 0.6) 0%, rgba(10, 14, 26, 0.4) 50%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .hero-label {
@@ -121,6 +133,17 @@
             color: #9ca3af;
             margin-top: -12px;
             margin-bottom: 28px;
+        }
+
+        .hero-spine {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-top: 24px;
+            letter-spacing: 0.02em;
+        }
+        .hero-spine span {
+            margin: 0 4px;
+            opacity: 0.8;
         }
 
         .cta-buttons {
@@ -181,7 +204,19 @@
 
         /* Main content */
         main {
+            position: relative;
             padding: 24px 0;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
         }
 
         /* Sections */
@@ -231,6 +266,50 @@
 
         ul li + li {
             margin-top: 6px;
+        }
+
+        /* Why this exists */
+        .why-this-exists {
+            padding: 20px 24px;
+            margin: 0 0 40px;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+        .why-this-exists .why-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 14px;
+        }
+        .why-this-exists ul {
+            margin: 0 0 12px;
+            padding-left: 20px;
+            list-style: disc;
+        }
+        .why-this-exists ul li {
+            font-size: 15px;
+            color: #d1d5db;
+            line-height: 1.5;
+            margin-bottom: 4px;
+            max-width: none;
+        }
+        .why-this-exists ul li::before {
+            display: none;
+        }
+        .why-this-exists p {
+            font-size: 15px;
+            color: #d1d5db;
+            margin: 0 0 8px;
+        }
+        .why-this-exists p:last-child {
+            color: #e5e7eb;
+            margin: 14px 0 0;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* What Pact is not */
@@ -382,6 +461,59 @@
                 margin: 60px 0;
             }
         }
+
+        /* Without / With Pact comparison block */
+        .compare-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin: 48px 0 56px;
+            max-width: 940px;
+        }
+        .compare-panel {
+            padding: 28px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.015);
+        }
+        .compare-panel h3 {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+            margin-bottom: 18px;
+        }
+        .compare-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .compare-panel li {
+            font-size: 16px;
+            line-height: 1.65;
+            color: #d1d5db;
+            margin-bottom: 10px;
+            padding-left: 18px;
+            position: relative;
+        }
+        .compare-panel li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            color: #4fa8ff;
+        }
+        .compare-panel.with {
+            border-color: rgba(79,168,255,0.35);
+            background: rgba(79,168,255,0.04);
+        }
+        @media (max-width: 768px) {
+            .compare-block {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 36px 0 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -402,15 +534,14 @@
 
         <main>
             <section class="hero">
-                <div class="hero-label">Evidence Standard</div>
-                <h1>Audit-grade evidence for autonomous agent transactions.</h1>
-                <p>Pact generates cryptographic proof of what autonomous agents agreed to, what executed, and who is responsible when something fails—so transactions are verifiable, replayable, and insurable.</p>
-                <p>Pact is a neutral, rail-agnostic standard for producing evidence—not a marketplace, arbiter, or payment system.</p>
+                <h1>Make autonomous agents auditable.</h1>
+                <p>Pact turns agent negotiations and high-risk actions into cryptographic evidence: signed transcripts, verifier outputs, and responsibility judgments—portable enough for audit, disputes, and insurance.</p>
                 <p class="muted">If an agent can act, Pact makes that action accountable.</p>
                 <div class="cta-buttons">
                     <a href="#demo" class="cta-button">Run the demo</a>
                     <a href="constitution.html" class="cta-button">Read the Constitution</a>
                 </div>
+                <p class="hero-spine">Intent <span>→</span> Negotiation <span>→</span> Policy <span>→</span> Settlement <span>→</span> Evidence <span>→</span> Blame</p>
             </section>
 
             <div class="feature-cards">
@@ -429,8 +560,56 @@
             </div>
 
             <section>
-                <h2>Why this exists</h2>
-                <p>Agent workflows create real financial and operational risk. Traditional logs are mutable and non-standard. When failures happen, the question becomes: "What is the evidence?" and "Who is responsible?"</p>
+                <h2>Why Pact exists</h2>
+
+                <div class="compare-block">
+                    <div class="compare-panel">
+                        <h3>Without Pact</h3>
+                        <ul>
+                            <li>Logs are informal and mutable</li>
+                            <li>Payments prove nothing about intent</li>
+                            <li>Failures are ambiguous</li>
+                            <li>Disputes require humans and guesswork</li>
+                            <li>Insurance and audit are impossible</li>
+                        </ul>
+                    </div>
+
+                    <div class="compare-panel with">
+                        <h3>With Pact</h3>
+                        <ul>
+                            <li>Negotiation is signed and hash-linked</li>
+                            <li>Intent and policy are explicit</li>
+                            <li>Settlement outcomes are deterministic</li>
+                            <li>Failures are classified with blame</li>
+                            <li>Evidence is portable and verifiable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="muted">
+                    Pact produces evidence for successful transactions, policy aborts, timeouts, and settlement failures.
+                    Failure is a first-class outcome.
+                </p>
+            </section>
+
+            <section id="demo">
+                <h2>CLI demo</h2>
+                <div class="code-block">
+                    <pre><code><span class="comment"># Run canonical demo negotiation</span>
+tsx demo/negotiate.ts --policy ./policies/default.json
+
+<span class="comment"># Verify transcript integrity</span>
+pact replay --transcript ./artifacts/transcript.json
+
+<span class="comment"># Generate evidence bundle</span>
+pact bundle --transcript ./artifacts/transcript.json --output ./artifacts/bundle.json
+
+<span class="comment"># Run blame judgment</span>
+pact judge --bundle ./artifacts/bundle.json --failure-event settlement_timeout</code></pre>
+                </div>
+                <p class="muted" style="margin-top: 16px;">
+                    <a href="evidence.html">Evidence</a> (what gets produced) · <a href="verifier.html">Verifier</a> (how it's checked) · <a href="constitution.html">Constitution</a> (rules of evidence)
+                </p>
             </section>
 
             <section>
@@ -450,33 +629,6 @@
                     </ul>
                     <p>It sits above existing rails and focuses on evidence, not execution.</p>
                 </div>
-            </section>
-
-            <section id="demo">
-                <h2>CLI demo</h2>
-                <div class="code-block">
-                    <pre><code><span class="comment"># Install dependencies</span>
-pnpm install
-
-<span class="comment"># Run canonical demo negotiation</span>
-tsx demo/negotiate.ts --policy ./policies/default.json
-
-<span class="comment"># Verify transcript integrity</span>
-pact replay --transcript ./artifacts/transcript.json
-
-<span class="comment"># Generate evidence bundle</span>
-pact bundle --transcript ./artifacts/transcript.json --output ./artifacts/bundle.json
-
-<span class="comment"># Run blame judgment</span>
-pact judge --bundle ./artifacts/bundle.json --failure-event settlement_timeout
-
-<span class="comment"># Outputs: signed transcript, verification result, evidence bundle, judgment</span></code></pre>
-                </div>
-                <ul class="artifacts">
-                    <li>Transcript (signed + hash chain)</li>
-                    <li>Evidence bundle (portable)</li>
-                    <li>Judgment (responsibility trace)</li>
-                </ul>
             </section>
 
             <section>

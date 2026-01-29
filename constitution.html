@@ -90,6 +90,18 @@
         .hero {
             padding: 32px 0 48px;
             max-width: 900px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            right: -40px;
+            top: -24px;
+            bottom: -24px;
+            background: linear-gradient(180deg, rgba(5, 8, 16, 0.6) 0%, rgba(10, 14, 26, 0.4) 50%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .hero-label {
@@ -118,7 +130,63 @@
 
         /* Main content */
         main {
+            position: relative;
             padding: 24px 0;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+        }
+
+        /* Why this exists */
+        .why-this-exists {
+            padding: 20px 24px;
+            margin: 0 0 40px;
+            max-width: 900px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+        .why-this-exists .why-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 14px;
+        }
+        .why-this-exists ul {
+            margin: 0 0 12px;
+            padding-left: 20px;
+            list-style: disc;
+        }
+        .why-this-exists ul li {
+            font-size: 15px;
+            color: #d1d5db;
+            line-height: 1.5;
+            margin-bottom: 4px;
+            max-width: none;
+        }
+        .why-this-exists ul li::before {
+            display: none;
+        }
+        .why-this-exists p {
+            font-size: 15px;
+            color: #d1d5db;
+            margin: 0 0 8px;
+        }
+        .why-this-exists p:last-child {
+            color: #e5e7eb;
+            margin: 14px 0 0;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* Sections */
@@ -277,11 +345,32 @@
 
         <main>
             <section class="hero">
-                <div class="hero-label">Constitution</div>
                 <h1>Pact Constitution (v1)</h1>
                 <p>This document defines the minimum rules for evidence, integrity, and responsibility attribution for Pact-generated transactions. It is written for auditors, legal, risk, and engineering teams.</p>
                 <p>This constitution governs only the generation, verification, and interpretation of Pact evidence. It does not govern commercial terms, pricing, or off-chain enforcement.</p>
+                <p>Autonomous agents can negotiate and commit capital.</p>
+                <p>This constitution defines what counts as evidence, how integrity is verified, and how responsibility is assigned—so disputes and audits are resolved from cryptographic record, not opinion.</p>
+                <p>That's it.</p>
             </section>
+
+            <div class="why-this-exists">
+                <div class="why-label">Why this exists</div>
+                <p>Autonomous agents can now:</p>
+                <ul>
+                    <li>negotiate contracts</li>
+                    <li>trigger payments</li>
+                    <li>commit capital</li>
+                    <li>act across organizational boundaries</li>
+                </ul>
+                <p>But today:</p>
+                <ul>
+                    <li>logs are mutable</li>
+                    <li>payments prove nothing about intent</li>
+                    <li>failures are ambiguous</li>
+                    <li>responsibility cannot be proven</li>
+                </ul>
+                <p>Pact exists because autonomous systems cannot scale without evidence.</p>
+            </div>
 
             <section>
                 <h2>Definitions</h2>
@@ -291,7 +380,7 @@
                     <li><span class="definition-term">Evidence Bundle:</span> A portable collection containing the transcript, verification artifacts, and metadata required for audit or dispute resolution.</li>
                     <li><span class="definition-term">Integrity:</span> The property that a transcript's hash chain is unbroken and all signatures are valid.</li>
                     <li><span class="definition-term">Settlement Attempt:</span> An execution event where agents attempt to fulfill the terms recorded in the transcript.</li>
-                    <li><span class="definition-term">Failure Event:</span> A settlement attempt that does not complete successfully or violates policy.</li>
+                    <li><span class="definition-term">Failure Event:</span> A settlement attempt or negotiation outcome that does not complete successfully or violates policy.</li>
                     <li><span class="definition-term">Judgment:</span> The deterministic output of Default Blame Logic (DBL) assigning responsibility for a failure event.</li>
                 </ol>
             </section>
