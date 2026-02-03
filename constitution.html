@@ -8,162 +8,81 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --bg-dark: #050a14; --bg-card: #0d1520; --bg-elevated: #161d2b; --text-primary: #f8fafc; --text-body: #cbd5e1; --text-dim: #64748b; --accent: #60a5fa; --accent-bright: #93c5fd; --border: rgba(100, 116, 139, 0.2); --glow: rgba(96, 165, 250, 0.1); }
-        body { font-family: 'DM Sans', system-ui, -apple-system, sans-serif; background: var(--bg-dark); color: var(--text-body); line-height: 1.65; font-size: 16px; overflow-x: hidden; }
-        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 10%, rgba(96,165,250,0.08) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(147,197,253,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 56px; position: relative; z-index: 1; }
-        header { padding: 28px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: rgba(5,10,20,0.8); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; margin: 0 -56px; padding-left: 56px; padding-right: 56px; }
-        .logo { display: block; text-decoration: none; }
-        .logo img { height: 34px; width: auto; display: block; }
-        nav { display: flex; gap: 48px; align-items: center; }
-        nav a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; position: relative; }
-        nav a:hover { color: var(--accent-bright); }
-        nav a:focus { outline: 2px solid rgba(96,165,250,0.5); outline-offset: 2px; border-radius: 2px; }
-        nav a.active { color: var(--text-primary); }
-        nav a.active::after { content: ''; position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
-        main { padding: 24px 0; }
-        .hero { padding: 48px 0 32px; max-width: 1000px; }
-        .hero h1 { font-size: 68px; font-weight: 700; line-height: 0.95; margin-bottom: 40px; letter-spacing: -0.04em; color: var(--text-primary); text-shadow: 0 0 40px rgba(96,165,250,0.15); }
-        .hero p { font-size: 19px; color: var(--text-body); line-height: 1.6; margin-bottom: 28px; }
-        .why-this-exists { padding: 20px; margin: 0 0 24px; max-width: 1000px; background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; }
-        .why-this-exists .why-label { font-size: 12px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
-        .why-this-exists ul { margin: 0 0 12px; padding-left: 20px; list-style: disc; }
-        .why-this-exists ul li { font-size: 17px; color: var(--text-body); line-height: 1.6; margin-bottom: 4px; max-width: none; }
-        .why-this-exists ul li::before { display: none; }
-        .why-this-exists p { font-size: 17px; color: var(--text-body); margin: 0 0 8px; }
-        .why-this-exists p:last-child { color: var(--text-primary); margin: 14px 0 0; padding-top: 12px; }
-        section { padding: 32px 0; margin-bottom: 8px; }
-        section h2 { font-size: 44px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.03em; color: var(--text-primary); }
-        section p { font-size: 17px; color: var(--text-body); line-height: 1.7; margin-bottom: 20px; max-width: 1000px; }
-        .definition-term { font-weight: 700; color: var(--text-primary); }
-        ol { list-style: none; counter-reset: item; margin-top: 14px; }
-        ol li { counter-increment: item; font-size: 17px; color: var(--text-body); line-height: 1.7; padding-left: 56px; position: relative; margin-bottom: 14px; max-width: 1000px; }
-        ol li::before { content: counter(item); position: absolute; left: 0; top: 0; width: 36px; height: 36px; background: var(--bg-card); border: 2px solid var(--accent); border-radius: 50%; color: var(--accent-bright); font-weight: 700; font-size: 14px; line-height: 32px; text-align: center; }
-        ul { list-style: none; margin-top: 36px; }
-        ul li { font-size: 17px; color: var(--text-body); line-height: 1.7; padding-left: 32px; position: relative; margin-bottom: 8px; max-width: 1000px; }
-        ul li::before { content: ''; position: absolute; left: 0; top: 12px; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
-        a { color: var(--accent); transition: color 0.2s; }
-        a:hover { color: var(--accent-bright); }
-        footer { padding: 32px 0 28px; border-top: 1px solid var(--border); margin-top: 40px; }
-        footer p { font-size: 15px; color: var(--text-dim); margin-bottom: 14px; }
-        footer .copyright { font-size: 14px; color: #475569; }
-        footer .copyright .accent { color: var(--accent); }
-        @media (max-width: 1024px) { .container { padding: 0 40px; } header { padding-left: 40px; padding-right: 40px; margin: 0 -40px; } .hero h1 { font-size: 56px; } }
-        @media (max-width: 640px) { .hero h1 { font-size: 42px; } section h2 { font-size: 32px; } header { flex-direction: column; align-items: flex-start; gap: 24px; padding-left: 24px; padding-right: 24px; margin: 0 -24px; } nav { gap: 32px; flex-wrap: wrap; } }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
             <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
             <nav>
-                <a href="constitution.html" class="active">Constitution</a>
+                <a href="index.html">Home</a>
                 <a href="evidence.html">Evidence</a>
                 <a href="verifier.html">Verifier</a>
-                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
-                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="viewer.html">Viewer</a>
+                <a href="constitution.html" class="active">Constitution</a>
+                <a href="docs.html">Docs</a>
                 <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
-                <a href="pact-docs.pdf" target="_blank">Docs</a>
-                <a href="mailto:sean@dao5.com">Email</a>
+                <a href="mailto:sean@dao5.com">Contact</a>
             </nav>
         </header>
 
         <main>
             <section class="hero">
-                <h1>Pact Constitution (v1)</h1>
-                <p>This document defines the minimum rules for evidence, integrity, and responsibility attribution for Pact-generated transactions. It is written for auditors, legal, risk, and engineering teams.</p>
-                <p>This constitution governs only the generation, verification, and interpretation of Pact evidence. It does not govern commercial terms, pricing, or off-chain enforcement.</p>
-                <p>Autonomous agents can negotiate and commit capital.</p>
-                <p>This constitution defines what counts as evidence, how integrity is verified, and how responsibility is assigned—so disputes and audits are resolved from cryptographic record, not opinion.</p>
-                <p>That's it.</p>
-            </section>
-
-            <div class="why-this-exists">
-                <div class="why-label">Why this exists</div>
-                <p>Autonomous agents can now:</p>
-                <ul>
-                    <li>negotiate contracts</li>
-                    <li>trigger payments</li>
-                    <li>commit capital</li>
-                    <li>act across organizational boundaries</li>
-                </ul>
-                <p>But today:</p>
-                <ul>
-                    <li>logs are mutable</li>
-                    <li>payments prove nothing about intent</li>
-                    <li>failures are ambiguous</li>
-                    <li>responsibility cannot be proven</li>
-                </ul>
-                <p>Pact exists because autonomous systems cannot scale without evidence.</p>
-            </div>
-
-            <section>
-                <h2>Definitions</h2>
-                <ol>
-                    <li><span class="definition-term">Transcript:</span> A chronologically ordered, hash-linked sequence of signed negotiation rounds between agents.</li>
-                    <li><span class="definition-term">Round:</span> A single negotiation step containing agent messages, policy checks, and cryptographic signatures.</li>
-                    <li><span class="definition-term">Evidence Bundle:</span> A portable collection containing the transcript, verification artifacts, and metadata required for audit or dispute resolution.</li>
-                    <li><span class="definition-term">Integrity:</span> The property that a transcript's hash chain is unbroken and all signatures are valid.</li>
-                    <li><span class="definition-term">Settlement Attempt:</span> An execution event where agents attempt to fulfill the terms recorded in the transcript.</li>
-                    <li><span class="definition-term">Failure Event:</span> A settlement attempt or negotiation outcome that does not complete successfully or violates policy.</li>
-                    <li><span class="definition-term">Judgment:</span> The deterministic output of Default Blame Logic (DBL) assigning responsibility for a failure event.</li>
-                </ol>
+                <h1>Constitution (v1)</h1>
+                <p>One tight scope: what counts as evidence, how integrity is verified, and how responsibility is assigned. Governs only generation, verification, and interpretation of Pact evidence—not commercial terms, pricing, or off-chain enforcement.</p>
             </section>
 
             <section>
                 <h2>Rules of Evidence</h2>
-                <ol>
-                    <li>Every negotiation round must be signed by all participating agents before the next round begins.</li>
-                    <li>Each round must include a hash reference to the previous round, forming an unbroken chain from the first round to the last.</li>
-                    <li>Evidence is admissible only if it contains a complete, verifiable transcript with valid signatures and hash chain.</li>
-                    <li>Claims without corresponding signed transcript entries are not admissible as evidence.</li>
-                    <li>Any modification to a signed transcript breaks the hash chain and must be detectable by verification.</li>
-                </ol>
+                <ul class="rules-list">
+                    <li>Hash-linked rounds: each round references the previous; chain is unbroken.</li>
+                    <li>Signed actors: every negotiation round is signed by participating agents before the next round.</li>
+                    <li>Deterministic replay: same inputs and policy produce the same transcript checks.</li>
+                    <li>Evidence bundle completeness: transcript, verification report, settlement attempts, and DBL judgment are required.</li>
+                    <li>Tamper semantics: any modification breaks the hash chain and is detectable. Verifier outputs FAIL with reason. Tamper that cannot be attributed to a single round is classified as <span class="definition-term">INDETERMINATE_TAMPER</span>.</li>
+                </ul>
             </section>
 
-            <section>
-                <h2>Verification Requirements</h2>
-                <ol>
-                    <li>A verifier must validate all cryptographic signatures in the transcript.</li>
-                    <li>A verifier must validate the hash chain integrity (each round's hash matches the previous round's output).</li>
-                    <li>Deterministic replay must produce the same transcript checks when given the same inputs and policy.</li>
-                    <li>Verification must output a binary result: PASS (all checks valid) or FAIL (any check invalid) with specific reasons for failure.</li>
-                </ol>
-            </section>
+            <div class="why-matters">
+                <h3>Why Constitution matters</h3>
+                <p>Makes evidence portable. Reduces subjectivity. Disputes and audits are resolved from cryptographic record, not opinion.</p>
+            </div>
 
             <section>
-                <h2>Default Blame Logic (DBL) — high level</h2>
-                <p>DBL assigns responsibility using the last valid signed state and policy timing. It examines the transcript to determine which agent's actions (or inactions) led to the failure event, based on policy rules and timing constraints.</p>
-                <p><span class="definition-term">NO_FAULT:</span> The failure event cannot be attributed to any agent's violation of policy or timing requirements as recorded in the transcript.</p>
-                <p><span class="definition-term">RESPONSIBLE_ACTOR:</span> The agent identified by DBL as having violated policy, missed a timing requirement, or failed to execute a required action as specified in the signed transcript.</p>
-                <p>DBL may be extended by explicit policy or arbitration modules, but must always remain deterministic and evidence-constrained.</p>
-            </section>
-
-            <section>
-                <h2>Failure Taxonomy</h2>
+                <h2>Definitions</h2>
                 <ul>
-                    <li>Policy aborts: An agent's action violates the agreed policy rules.</li>
-                    <li>Identity/credential failures: An agent cannot prove its identity or authorization as required by policy.</li>
-                    <li>Negotiation deadlocks/timeouts: Agents fail to reach agreement within policy-defined time limits.</li>
-                    <li>Settlement failures: Execution of the agreed terms fails at the payment or service delivery layer.</li>
-                    <li>Evidence integrity failures: The transcript or evidence bundle fails verification checks.</li>
+                    <li><span class="definition-term">Transcript:</span> Chronologically ordered, hash-linked sequence of signed negotiation rounds.</li>
+                    <li><span class="definition-term">Evidence Bundle / Auditor Pack:</span> Portable collection: transcript, verification artifacts, DBL judgment, metadata for audit or dispute.</li>
+                    <li><span class="definition-term">Judgment:</span> Deterministic output of Default Blame Logic (DBL): NO_FAULT or RESPONSIBLE_ACTOR (and optionally INDETERMINATE_TAMPER for tamper cases).</li>
                 </ul>
             </section>
 
             <section>
-                <h2>Non-goals</h2>
+                <h2>Verification requirements</h2>
                 <ul>
-                    <li>Pact does not judge "truth" of off-chain claims without evidence.</li>
-                    <li>Pact does not replace payments.</li>
-                    <li>Pact does not resolve all disputes without agreed arbitration policy.</li>
+                    <li>Verifier validates all signatures and hash chain integrity.</li>
+                    <li>Replay determinism: same inputs → same checks.</li>
+                    <li>Output: PASS or FAIL with specific reasons.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Default Blame Logic (DBL)</h2>
+                <p>DBL assigns responsibility using the last valid signed state and policy timing. NO_FAULT when the failure cannot be attributed to an agent; RESPONSIBLE_ACTOR when an agent violated policy, missed timing, or failed a required action. DBL remains deterministic and evidence-constrained.</p>
+            </section>
+
+            <section>
+                <h2>What the Constitution does not govern</h2>
+                <ul>
+                    <li>Commercial terms, pricing, or off-chain enforcement.</li>
+                    <li>Truth of off-chain claims without evidence.</li>
+                    <li>Payments or dispute resolution without agreed arbitration policy.</li>
                 </ul>
             </section>
         </main>
 
         <footer>
-            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p><a href="docs.html">Docs</a> · <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a> · <a href="evidence.html">Design partner kit</a> · <a href="mailto:sean@dao5.com">Contact</a></p>
             <p class="copyright">© pact<span class="accent">_</span></p>
         </footer>
     </div>

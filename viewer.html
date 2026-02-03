@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence Viewer — Local, offline, drag-drop | Pact</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="Pact"></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="viewer.html" class="active">Viewer</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="docs.html">Docs</a>
+                <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:sean@dao5.com">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Evidence Viewer</h1>
+                <p>Local, offline, drag-drop Auditor Pack. Designed for counsel and underwriters. No server. No account. Drop a pack, see verdict, timeline, DBL panel, and export GC or Insurer PDFs.</p>
+            </section>
+
+            <section>
+                <h2>What you see</h2>
+                <p>Static mock of the viewer UI. In the real app you drag-drop a pack ZIP and get:</p>
+                <div class="ui-mock">
+                    <h3>Verdict header</h3>
+                    <div class="ui-mock-row">
+                        <div class="ui-mock-cell"><strong>Integrity</strong><br><span>PASS</span></div>
+                        <div class="ui-mock-cell"><strong>Judgment</strong><br><span>NO_FAULT</span></div>
+                        <div class="ui-mock-cell"><strong>Confidence</strong><br><span>1.0</span></div>
+                    </div>
+                    <h3>Timeline · Rounds</h3>
+                    <p style="margin-bottom: 12px; font-size: 14px; color: var(--text-dim);">Round [0] INTENT → Round [1] ASK → Round [2] ACCEPT (FINAL)</p>
+                    <h3>DBL panel</h3>
+                    <p style="font-size: 14px; color: var(--text-body);">Default Blame Logic result and responsible actor (if any).</p>
+                    <h3>Warnings</h3>
+                    <p style="font-size: 14px; color: var(--text-dim);">None, or list of non-fatal advisories.</p>
+                    <div class="ui-mock-buttons">
+                        <a href="#" class="btn primary">Export GC PDF</a>
+                        <a href="#" class="btn secondary">Export Insurer PDF</a>
+                    </div>
+                </div>
+                <p>Run the viewer locally: <code style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--accent); background: rgba(13,21,32,0.8); padding: 4px 8px; border-radius: 4px;">pnpm --filter @pact/evidence-viewer dev</code> (from the pact-protocol repo).</p>
+            </section>
+        </main>
+
+        <footer>
+            <p><a href="docs.html">Docs</a> · <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a> · <a href="evidence.html">Evidence</a> · <a href="mailto:sean@dao5.com">Contact</a></p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>
