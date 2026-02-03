@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Use Case: Autonomous API Procurement — pact_</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}:root{--bg-dark:#050a14;--bg-card:#0d1520;--bg-elevated:#161d2b;--text-primary:#f8fafc;--text-body:#cbd5e1;--text-dim:#64748b;--accent:#60a5fa;--accent-bright:#93c5fd;--border:rgba(100,116,139,0.2)}body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg-dark);color:var(--text-body);line-height:1.65;font-size:17px;overflow-x:hidden}body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 10%,rgba(96,165,250,0.08) 0%,transparent 40%),radial-gradient(circle at 80% 80%,rgba(147,197,253,0.05) 0%,transparent 50%);pointer-events:none;z-index:0}.container{max-width:1280px;margin:0 auto;padding:0 56px;position:relative;z-index:1}header{padding:28px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:rgba(5,10,20,0.8);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;margin:0 -56px;padding-left:56px;padding-right:56px}.logo img{height:34px;width:auto}nav{display:flex;gap:48px;align-items:center}nav a{color:var(--text-dim);text-decoration:none;font-size:15px;font-weight:500;transition:color .2s;position:relative}nav a:hover{color:var(--accent-bright)}nav a.active{color:var(--text-primary)}nav a.active::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--accent);border-radius:50%}.hero{padding:140px 0 100px;max-width:1000px}.hero-label{font-size:11px;font-weight:700;color:var(--accent-bright);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px}.hero h1{font-size:84px;font-weight:700;line-height:.95;margin-bottom:40px;letter-spacing:-0.04em;color:var(--text-primary);text-shadow:0 0 40px rgba(96,165,250,0.15)}.hero p{font-size:22px;color:var(--text-body);line-height:1.6;margin-bottom:28px}.hero-spine{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-top:56px;padding:20px 28px;background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:4px;letter-spacing:.01em;display:inline-block}.hero-spine span{color:var(--accent);margin:0 12px}section{padding:100px 0}section h2{font-size:56px;font-weight:700;margin-bottom:56px;letter-spacing:-0.03em;color:var(--text-primary)}section h3{font-size:28px;font-weight:600;margin-bottom:24px;margin-top:56px;color:var(--text-primary)}section p{font-size:19px;color:var(--text-body);line-height:1.7;max-width:1000px}section p+p{margin-top:24px}ul{list-style:none;margin-top:36px}ul li{font-size:19px;color:var(--text-body);line-height:1.7;padding-left:32px;position:relative;margin-bottom:16px}ul li::before{content:'';position:absolute;left:0;top:12px;width:8px;height:8px;background:var(--accent);border-radius:50%}ol{list-style:none;counter-reset:item;margin-top:40px}ol li{counter-increment:item;font-size:19px;color:var(--text-body);line-height:1.7;padding-left:60px;position:relative;margin-bottom:28px}ol li::before{content:counter(item);position:absolute;left:0;top:0;width:40px;height:40px;background:var(--bg-card);border:2px solid var(--accent);border-radius:50%;color:var(--accent-bright);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}.problem-box,.solution-box{margin:48px 0;padding:44px;border:1px solid var(--border);border-radius:8px;background:var(--bg-card)}.problem-box{border-left:4px solid #dc2626}.solution-box{border-left:4px solid var(--accent);box-shadow:0 0 32px rgba(96,165,250,0.1)}.code-block{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:36px;margin:48px 0;overflow-x:auto}.code-block pre{font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:1.8;color:var(--text-body)}footer{padding:100px 0 70px;border-top:1px solid var(--border);margin-top:140px}footer p{font-size:16px;color:var(--text-dim);margin-bottom:14px}footer .copyright{font-size:15px;color:#475569}footer .copyright .accent{color:var(--accent)}@media (max-width:1024px){.container{padding:0 40px}header{padding-left:40px;padding-right:40px;margin:0 -40px}.hero h1{font-size:64px}}@media (max-width:640px){.hero h1{font-size:48px}section h2{font-size:38px}header{flex-direction:column;align-items:flex-start;gap:24px}nav{gap:32px;flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
+<nav>
+<a href="constitution.html">Constitution</a>
+<a href="evidence.html">Evidence</a>
+<a href="verifier.html">Verifier</a>
+<a href="use-case-autonomous-api-procurement.html" class="active">Use Case</a>
+<a href="https://x.com/pact_protocol" target="_blank">X</a>
+<a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
+<a href="pact-docs.pdf" target="_blank">Docs</a>
+<a href="mailto:sean@dao5.com">Email</a>
+</nav>
+</header>
+<main>
+<section class="hero">
+<div class="hero-label">Use Case</div>
+<h1>Autonomous API Procurement</h1>
+<p>An AI agent needs to purchase compute time, API access, or data services from multiple providers. It must negotiate price, enforce SLAs, detect failures, and prove what happened—all autonomously.</p>
+<div class="hero-spine">Discovery <span>→</span> Negotiation <span>→</span> Settlement <span>→</span> Evidence <span>→</span> Attribution</div>
+</section>
+<section>
+<h2>The scenario</h2>
+<p>A company deploys an autonomous agent that needs to:</p>
+<ul>
+<li>Discover available API providers (compute, data, models)</li>
+<li>Negotiate pricing and service-level agreements</li>
+<li>Execute purchases and trigger payments</li>
+<li>Detect and classify failures</li>
+<li>Produce audit trails for finance, legal, and risk teams</li>
+</ul>
+</section>
+<section>
+<h2>Without Pact</h2>
+<div class="problem-box">
+<h3 style="margin-top:0;font-size:20px;color:#dc2626">Problems</h3>
+<ul>
+<li>Agent logs are mutable and not admissible as evidence</li>
+<li>Payments happen, but intent and agreement are unclear</li>
+<li>When a provider fails SLA, there's no cryptographic proof</li>
+<li>Disputes require manual investigation and guesswork</li>
+<li>Risk teams cannot underwrite or approve autonomous spending</li>
+</ul>
+</div>
+</section>
+<section>
+<h2>With Pact</h2>
+<div class="solution-box">
+<h3 style="margin-top:0;font-size:20px;color:var(--accent-bright)">Solution</h3>
+<p>The agent wraps high-risk actions inside Pact. Every negotiation round is signed, hash-linked, and policy-enforced. Settlement is atomic. Evidence is automatic.</p>
+</div>
+<h3>Step 1: Intent declaration</h3>
+<p>The agent declares what it needs:</p>
+<div class="code-block">
+<pre><code>{
+  "intent": "purchase_compute",
+  "budget": "≤ $50",
+  "latency": "≤ 200ms",
+  "reputation_min": 0.90,
+  "policy": "policy_hash_abc123"
+}</code></pre>
+</div>
+<h3>Step 2: Negotiation (signed rounds)</h3>
+<p>Providers respond. Each round is signed by both parties:</p>
+<ul>
+<li>Provider offers: $45, 180ms latency, reputation 0.95</li>
+<li>Agent accepts</li>
+<li>Both parties sign the agreement</li>
+</ul>
+<h3>Step 3: Policy enforcement</h3>
+<p>Before settlement, Pact validates:</p>
+<ul>
+<li>Budget constraint met ($45 ≤ $50)</li>
+<li>Latency SLA met (180ms ≤ 200ms)</li>
+<li>Reputation threshold met (0.95 ≥ 0.90)</li>
+</ul>
+<p>If any constraint is violated, the transaction aborts before payment.</p>
+<h3>Step 4: Settlement</h3>
+<p>Payment executes. The provider delivers the service. Pact records the outcome:</p>
+<ul>
+<li>✅ Settlement succeeded</li>
+<li>❌ Provider missed SLA (latency was 250ms)</li>
+<li>❌ Provider failed to deliver</li>
+</ul>
+<h3>Step 5: Evidence bundle</h3>
+<p>Pact produces a portable evidence bundle containing:</p>
+<ul>
+<li>Signed transcript of the negotiation</li>
+<li>Policy hash and enforcement results</li>
+<li>Settlement attempt records</li>
+<li>Failure classification (if any)</li>
+<li>Responsibility judgment (Default Blame Logic)</li>
+</ul>
+</section>
+<section>
+<h2>When something fails</h2>
+<p>If the provider misses SLA or fails to deliver:</p>
+<ol>
+<li>Pact identifies the failure event from the settlement record</li>
+<li>Default Blame Logic (DBL) assigns responsibility</li>
+<li>Evidence bundle is portable to legal, insurance, or arbitration</li>
+</ol>
+<p>No manual investigation. No ambiguity. The transcript proves who agreed to what.</p>
+</section>
+<section>
+<h2>Who benefits</h2>
+<ul>
+<li><strong style="color:var(--text-primary)">CFO/Finance:</strong> Autonomous spending has audit trails</li>
+<li><strong style="color:var(--text-primary)">Risk/Security:</strong> Policy violations are detected before payment</li>
+<li><strong style="color:var(--text-primary)">Legal:</strong> Disputes are resolved from evidence, not testimony</li>
+<li><strong style="color:var(--text-primary)">Insurers:</strong> Autonomous workflows are underwritable</li>
+<li><strong style="color:var(--text-primary)">Developers:</strong> No need to build custom dispute systems</li>
+</ul>
+</section>
+</main>
+<footer>
+<p>Open-source · Rail-agnostic · Transcript-first</p>
+<p class="copyright">© pact<span class="accent">_</span></p>
+</footer>
+</div>
+</body>
+</html>
