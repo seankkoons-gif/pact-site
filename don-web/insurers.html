@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Pact: Evidence for Insurers and Underwriters</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-gc">
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="Pact"></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="viewer.html">Viewer</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="partners.html">Partners</a>
+                <a href="docs.html">Docs</a>
+                <a href="gc.html">GC One-Pager</a>
+                <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:sean@dao5.com">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Pact: Evidence for Insurers and Underwriters</h1>
+                <p class="gc-subtitle">Assess autonomous system risk using verifiable proof, not operator claims.</p>
+            </section>
+
+            <section>
+                <h2>The Underwriting Problem</h2>
+                <p>Autonomous agents can transact, negotiate, and execute without human review. When failures occur, insurers are often presented with incomplete logs, subjective explanations, or platform-controlled dashboards.</p>
+                <p>This makes underwriting, claims evaluation, and post-incident review unreliable.</p>
+            </section>
+
+            <section>
+                <h2>What Pact Provides</h2>
+                <p>Pact produces sealed evidence bundles ("Auditor Packs") that insurers can independently verify offline.</p>
+                <p>Each pack contains:</p>
+                <ul>
+                    <li>A complete, hash-linked negotiation transcript</li>
+                    <li>Signed identities for all participating agents</li>
+                    <li>Policy checks and settlement attempts</li>
+                    <li>A verification report confirming integrity</li>
+                    <li>A signed responsibility attribution (Default Blame Logic)</li>
+                    <li>A concise insurer summary</li>
+                </ul>
+                <p>No access to Pact infrastructure or the originating platform is required.</p>
+            </section>
+
+            <section>
+                <h2>Responsibility Attribution</h2>
+                <p>Pact deterministically identifies:</p>
+                <ul>
+                    <li>A responsible actor, or</li>
+                    <li>NO_FAULT</li>
+                </ul>
+                <p>This attribution is based solely on signed protocol evidence and published rules.</p>
+                <p>Pact does not assess damages, liability limits, or coverage decisions.</p>
+            </section>
+
+            <section>
+                <h2>Why This Matters for Insurers</h2>
+                <p>With Pact:</p>
+                <ul>
+                    <li>Claims can be evaluated using portable, replayable evidence</li>
+                    <li>Responsibility is provable, not disputed</li>
+                    <li>Evidence remains valid even if platforms or vendors change</li>
+                    <li>Risk models can be built on real failure data, not anecdotes</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>What Pact Is Not</h2>
+                <p>Pact is not:</p>
+                <ul>
+                    <li>An arbitration system</li>
+                    <li>A claims processor</li>
+                    <li>A custodian of funds</li>
+                    <li>A black-box scoring model</li>
+                </ul>
+                <p>It is an evidence standard.</p>
+            </section>
+
+            <p class="gc-closing">Pact allows insurers to underwrite autonomous systems using proof instead of trust.</p>
+        </main>
+
+        <footer>
+            <p><a href="docs.html">Docs</a> · <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a> · <a href="gc.html">GC One-Pager</a> · <a href="failures.html">When Things Go Wrong</a> · <a href="evidence.html">Design partner kit</a> · <a href="mailto:sean@dao5.com">Contact</a></p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>

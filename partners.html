@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners — Pact</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="Pact"></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="viewer.html">Viewer</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="partners.html" class="active">Partners</a>
+                <a href="docs.html">Docs</a>
+                <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:sean@dao5.com">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Partners</h1>
+                <p class="section-subhead">Who Pact is for, why partner, and how organizations adopt without absorbing liability.</p>
+                <p>Pact is designed to be adopted by infrastructure providers, platforms, and enterprises without forcing any party to become the arbiter of disputes. Partners ship evidence — not opinions.</p>
+            </section>
+
+            <section>
+                <h2>Who it's for</h2>
+                <p class="section-subhead">General Counsel, risk, audit, insurers, and platform operators. <a href="gc.html">GC One-Pager</a> · <a href="insurers.html">Insurer One-Pager</a>. See <a href="failures.html">When Things Go Wrong</a> for failure handling end-to-end.</p>
+                <div class="who-grid">
+                    <div class="who-item">
+                        <h3>General Counsel / Risk / Audit / Insurers</h3>
+                        <p>5-minute review. Offline verification. GC-ready PDF and insurer summary from the pack.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Compliance / Internal Audit</h3>
+                        <p>Deterministic, replayable evidence for internal investigations. Verify packs offline, archive them as canonical records, and review failures without relying on runtime logs or dashboards.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Insurers / Underwriters</h3>
+                        <p>Portable evidence bundles with signed responsibility attribution. Evaluate agent risk, disputes, and failure modes without trusting the operator, runtime, or platform.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Platform Operators</h3>
+                        <p>Ship audit-grade proof when autonomous workflows fail — without becoming the judge, arbiter, or custodian. Pact lets platforms provide evidence without absorbing liability.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Engineering (agent builders)</h3>
+                        <p>Verifier-first adoption: use verifier + packs before running the SDK. Local inspection, deterministic replay.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="partner-why-top">
+                <h2>Why partner with Pact</h2>
+                <p class="section-subhead">Adopt an evidence standard without becoming the judge, escrow, or enforcement layer.</p>
+                <ul>
+                    <li><strong>No liability absorption.</strong> You emit or verify evidence; you don't adjudicate disputes or hold funds.</li>
+                    <li><strong>Verifier-first.</strong> Ship proof that anyone can check offline — no dependency on your runtime or dashboard.</li>
+                    <li><strong>Institution-ready.</strong> Packs produce GC PDFs, insurer summaries, and audit-grade artifacts your customers already expect.</li>
+                    <li><strong>Clear responsibility.</strong> Default Blame Logic gives a deterministic answer (responsible actor or NO_FAULT) so disputes resolve from evidence, not debate.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="visually-subtle">Who partners with Pact</h2>
+                <div class="partner-type-grid">
+                    <article class="partner-type-card">
+                        <span class="partner-type-label">Infrastructure</span>
+                        <h3>Infrastructure Providers</h3>
+                        <p class="partner-examples">Payment rails, cloud providers, agent runtimes, data providers, execution layers.</p>
+                        <p class="partner-do"><strong>What they do:</strong> Embed or emit Pact evidence when autonomous workflows transact or fail.</p>
+                        <h4>What they get</h4>
+                        <ul>
+                            <li>A neutral, third-party-verifiable evidence standard</li>
+                            <li>No obligation to adjudicate disputes</li>
+                            <li>No requirement to operate a dashboard or SaaS control plane</li>
+                            <li>Offline-verifiable artifacts that outlive the runtime</li>
+                        </ul>
+                        <p class="partner-why">Pact allows infrastructure providers to prove what happened without taking responsibility for what should happen next.</p>
+                    </article>
+
+                    <article class="partner-type-card">
+                        <span class="partner-type-label">Platform</span>
+                        <h3>Platforms</h3>
+                        <p class="partner-examples">Agent platforms, API marketplaces, autonomous workflow systems, orchestration layers.</p>
+                        <p class="partner-do"><strong>What they do:</strong> Use Pact to produce audit-grade proof for transactions executed by user-controlled agents.</p>
+                        <h4>What they get</h4>
+                        <ul>
+                            <li>Clear responsibility attribution via Default Blame Logic</li>
+                            <li>Reduced legal and operational ambiguity</li>
+                            <li>A verifier-first adoption path (emit packs first, integrate SDK later)</li>
+                            <li>Artifacts that can be handed directly to customers, auditors, or insurers</li>
+                        </ul>
+                        <p class="partner-why">Pact lets platforms ship accountability as infrastructure — without becoming the judge, escrow, or enforcement layer.</p>
+                    </article>
+
+                    <article class="partner-type-card">
+                        <span class="partner-type-label">Enterprise</span>
+                        <h3>Enterprises</h3>
+                        <p class="partner-examples">Companies deploying autonomous agents for procurement, trading, data access, or internal automation.</p>
+                        <p class="partner-do"><strong>What they do:</strong> Run agents inside Pact Boundaries so every negotiation and settlement attempt produces verifiable evidence.</p>
+                        <h4>What they get</h4>
+                        <ul>
+                            <li>Deterministic, replayable records of agent behavior</li>
+                            <li>GC-ready PDFs and insurer summaries</li>
+                            <li>A clear answer to "who is responsible?" when automation fails</li>
+                            <li>Evidence that can be reviewed years later, independent of vendor systems</li>
+                        </ul>
+                        <p class="partner-why">Pact gives enterprises provable accountability without relying on vendor assurances or internal logging systems.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <h2>How partnering works</h2>
+                <p class="section-subhead">Provide accountability without becoming the judge.</p>
+                <div class="who-grid">
+                    <div class="who-item">
+                        <h3>Neutral by design</h3>
+                        <p>Pact is not a marketplace, custodian, or arbiter. Partners can ship Pact evidence without owning disputes, outcomes, or enforcement.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Liability containment</h3>
+                        <p>When something goes wrong, Pact produces third-party-verifiable proof. Partners provide evidence — not explanations, opinions, or legal conclusions.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Verifier-only adoption path</h3>
+                        <p>Partners can adopt Pact incrementally. Start by emitting or accepting Auditor Packs; full SDK integration is optional and non-blocking.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Standards, not lock-in</h3>
+                        <p>Pact artifacts are portable, inspectable, and replayable. Partners are not locked into a SaaS platform, runtime, or proprietary review system.</p>
+                    </div>
+                </div>
+                <p class="muted mt-24 section-close">Pact partners ship trust without absorbing risk.</p>
+            </section>
+
+            <section class="partner-close-section">
+                <blockquote class="pull-quote pull-quote-large partner-close">
+                    Pact partners do not resolve disputes. They provide evidence strong enough that disputes resolve themselves.
+                </blockquote>
+            </section>
+        </main>
+
+        <footer>
+            <p><a href="docs.html">Docs</a> · <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a> · <a href="gc.html">GC One-Pager</a> · <a href="insurers.html">Insurers</a> · <a href="failures.html">When Things Go Wrong</a> · <a href="evidence.html">Design partner kit</a> · <a href="mailto:sean@dao5.com">Contact</a></p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>

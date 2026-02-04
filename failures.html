@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When Things Go Wrong — Pact</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="Pact"></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="viewer.html">Viewer</a>
+                <a href="constitution.html">Constitution</a>
+                <a href="partners.html">Partners</a>
+                <a href="docs.html">Docs</a>
+                <a href="gc.html">GC One-Pager</a>
+                <a href="insurers.html">Insurers</a>
+                <a href="failures.html" class="active">When Things Go Wrong</a>
+                <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:sean@dao5.com">Contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>When Things Go Wrong</h1>
+                <p class="section-subhead">How Pact handles failure without ambiguity or blame games.</p>
+                <p>Autonomous systems fail in predictable ways. Pact does not prevent failure — it ensures failures produce verifiable evidence and clear responsibility.</p>
+            </section>
+
+            <section>
+                <h2>Timeline</h2>
+                <div class="failure-timeline">
+                    <div class="failure-step">
+                        <span class="failure-step-num">1</span>
+                        <div class="failure-step-content">
+                            <h3>Intent</h3>
+                            <p>An agent initiates a request or transaction.</p>
+                            <ul>
+                                <li>Intent is signed</li>
+                                <li>Policies are declared</li>
+                                <li>Constraints are explicit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">2</span>
+                        <div class="failure-step-content">
+                            <h3>Negotiation</h3>
+                            <p>Terms are negotiated across signed, hash-linked rounds.</p>
+                            <ul>
+                                <li>All offers and counters recorded</li>
+                                <li>No silent mutations</li>
+                                <li>Deterministic transcript</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">3</span>
+                        <div class="failure-step-content">
+                            <h3>Policy Enforcement</h3>
+                            <p>Policies are evaluated before execution.</p>
+                            <p><strong>Possible outcomes:</strong> Pass → proceed · Fail → policy abort (e.g. <span class="code">PACT-101</span>)</p>
+                            <p>Policy failures are recorded as evidence, not exceptions.</p>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">4</span>
+                        <div class="failure-step-content">
+                            <h3>Settlement Attempt</h3>
+                            <p>Execution or payment is attempted.</p>
+                            <p><strong>Possible outcomes:</strong> Success · Timeout / non-response · Partial fulfillment</p>
+                            <p>All attempts are recorded.</p>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">5</span>
+                        <div class="failure-step-content">
+                            <h3>Evidence Sealing</h3>
+                            <p>An Auditor Pack is generated containing:</p>
+                            <ul>
+                                <li>Full transcript</li>
+                                <li>Verification report</li>
+                                <li>Settlement records</li>
+                            </ul>
+                            <p>The pack is sealed and tamper-evident.</p>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">6</span>
+                        <div class="failure-step-content">
+                            <h3>Verification</h3>
+                            <p>Any party can verify the pack offline using the Pact verifier.</p>
+                            <p><strong>Verification checks:</strong> Hash chain integrity · Signatures · Constitution compliance · Deterministic replay</p>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">7</span>
+                        <div class="failure-step-content">
+                            <h3>Responsibility Attribution</h3>
+                            <p>Default Blame Logic produces a signed judgment:</p>
+                            <ul>
+                                <li><span class="code">RESPONSIBLE_ACTOR</span>, or</li>
+                                <li><span class="code">NO_FAULT</span></li>
+                            </ul>
+                            <p>This judgment is evidence — not an opinion.</p>
+                        </div>
+                    </div>
+                    <div class="failure-step">
+                        <span class="failure-step-num">8</span>
+                        <div class="failure-step-content">
+                            <h3>Review &amp; Resolution</h3>
+                            <p>Evidence can be reviewed by: Legal · Risk · Insurers · Auditors</p>
+                            <p>Pact does not resolve disputes. It makes resolution possible.</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="failure-closing">Failures are inevitable. Ambiguity is optional.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p><a href="docs.html">Docs</a> · <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a> · <a href="gc.html">GC One-Pager</a> · <a href="insurers.html">Insurers</a> · <a href="failures.html">When Things Go Wrong</a> · <a href="evidence.html">Design partner kit</a> · <a href="mailto:sean@dao5.com">Contact</a></p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>

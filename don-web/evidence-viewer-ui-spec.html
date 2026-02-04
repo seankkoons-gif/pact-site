@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence Viewer — UI spec (transcript replay style)</title>
+  <style>
+    /* ============== DESIGN TOKENS (match transcript_replay_screenshot.svg + site) ============== */
+    :root {
+      /* Backgrounds */
+      --viewer-bg: #050810;
+      --viewer-panel-bg: #050810;
+      --viewer-frame-border: rgba(255, 255, 255, 0.18);
+
+      /* Text */
+      --viewer-text: #e5e7eb;
+      --viewer-text-muted: #9ca3af;
+      --viewer-accent: #4fa8ff;
+
+      /* Panel */
+      --viewer-radius-outer: 18px;
+      --viewer-radius-inner: 14px;
+      --viewer-padding: 24px;
+      --viewer-gap-section: 36px;
+      --viewer-gap-line: 28px;
+
+      /* Typography */
+      --viewer-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      --viewer-font-size: 15px;
+      --viewer-font-size-small: 13px;
+      --viewer-line-height: 1.5;
+    }
+
+    /* ============== CONTAINER (main replay/output panel) ============== */
+    .viewer-panel {
+      background: var(--viewer-bg);
+      border: 2px solid var(--viewer-frame-border);
+      border-radius: var(--viewer-radius-inner);
+      padding: var(--viewer-padding);
+      font-family: var(--viewer-font-mono);
+      font-size: var(--viewer-font-size);
+      line-height: var(--viewer-line-height);
+      color: var(--viewer-text);
+      overflow-x: auto;
+    }
+
+    /* ============== BLOCKS ============== */
+    .viewer-command {
+      color: var(--viewer-text);
+      margin-bottom: var(--viewer-gap-section);
+    }
+
+    .viewer-meta {
+      color: var(--viewer-text-muted);
+      margin-bottom: 8px;
+    }
+
+    .viewer-meta .viewer-value-accent {
+      color: var(--viewer-accent);
+    }
+
+    .viewer-rounds {
+      margin-top: var(--viewer-gap-section);
+      margin-bottom: var(--viewer-gap-section);
+    }
+
+    .viewer-round-line {
+      margin-bottom: 6px;
+      color: var(--viewer-text);
+    }
+
+    .viewer-label-value {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-bottom: var(--viewer-gap-line);
+      align-items: baseline;
+    }
+
+    .viewer-label {
+      color: var(--viewer-text-muted);
+      flex-shrink: 0;
+    }
+
+    .viewer-value {
+      color: var(--viewer-text);
+      word-break: break-all;
+      font-size: var(--viewer-font-size-small);
+    }
+
+    .viewer-value.success {
+      color: var(--viewer-accent);
+    }
+
+    .viewer-footer-note {
+      margin-top: var(--viewer-gap-section);
+      color: var(--viewer-text-muted);
+      font-size: var(--viewer-font-size-small);
+    }
+
+    /* Optional: verdict header row (Integrity / Judgment / Confidence) */
+    .viewer-verdict-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: var(--viewer-gap-section);
+      padding-bottom: var(--viewer-gap-line);
+      border-bottom: 1px solid var(--viewer-frame-border);
+    }
+
+    .viewer-verdict-cell strong {
+      display: block;
+      font-size: var(--viewer-font-size-small);
+      color: var(--viewer-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .viewer-verdict-cell span {
+      color: var(--viewer-accent);
+      font-weight: 500;
+    }
+
+    /* Export buttons */
+    .viewer-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: var(--viewer-gap-section);
+      flex-wrap: wrap;
+    }
+
+    .viewer-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+
+    .viewer-btn.primary {
+      background: var(--viewer-accent);
+      color: #050810;
+    }
+
+    .viewer-btn.secondary {
+      background: transparent;
+      color: var(--viewer-text);
+      border: 1px solid var(--viewer-frame-border);
+    }
+
+    .viewer-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body style="margin:0; background:#0d1520; padding:24px; font-family: system-ui, sans-serif;">
+  <h2 style="color:#f8fafc; margin-bottom:16px;">Evidence Viewer — UI spec</h2>
+  <p style="color:#94a3b8; margin-bottom:24px; max-width:560px;">
+    Use these classes and tokens in your Evidence Viewer app so it matches the transcript replay screenshot. Copy the panel markup and CSS into your viewer (React/Vue/etc.).
+  </p>
+
+  <!-- Example: full panel in transcript-replay style -->
+  <div class="viewer-panel" style="max-width: 640px;">
+    <!-- Optional title (e.g. "Transcript replay (redacted)") -->
+    <!-- <div class="viewer-title" style="font-size:18px; font-weight:600; margin-bottom:4px;">Transcript replay</div> -->
+    <!-- <div class="viewer-subtitle" style="font-size:13px; color: var(--viewer-text-muted); margin-bottom:24px;">Documentation-friendly render of transcript verification output.</div> -->
+
+    <!-- Verdict header (Integrity / Judgment / Confidence) -->
+    <div class="viewer-verdict-row">
+      <div class="viewer-verdict-cell">
+        <strong>Integrity</strong>
+        <span>PASS</span>
+      </div>
+      <div class="viewer-verdict-cell">
+        <strong>Judgment</strong>
+        <span>NO_FAULT</span>
+      </div>
+      <div class="viewer-verdict-cell">
+        <strong>Confidence</strong>
+        <span>1.0</span>
+      </div>
+    </div>
+
+    <!-- Command line -->
+    <div class="viewer-command">
+      pact replay --transcript ./.pact/transcripts/transcript-…json
+    </div>
+
+    <!-- Meta lines -->
+    <div class="viewer-meta">[pact-replay] schema: pact-transcript/4.0</div>
+    <div class="viewer-meta">[pact-replay] rounds: 3</div>
+    <div class="viewer-meta">[pact-replay] integrity: <span class="viewer-value-accent">VALID</span></div>
+
+    <!-- Rounds -->
+    <div class="viewer-rounds">
+      <div class="viewer-round-line">round [0] INTENT  hash=0x0d4b…9a2c  sigs=2/2</div>
+      <div class="viewer-round-line">round [1] ASK     hash=0x3a91…f0c8  sigs=2/2</div>
+      <div class="viewer-round-line">round [2] ACCEPT  hash=0x8b2c…3c4d  sigs=2/2  (FINAL)</div>
+    </div>
+
+    <!-- Label + value pairs -->
+    <div class="viewer-label-value">
+      <span class="viewer-label">final_hash:</span>
+      <span class="viewer-value">0x8b2c4d8a0f6e3a1c9d7b5e2f1a0c3b4d5e6f708192a3b4c5d6e7f8091a2b3c4d</span>
+    </div>
+    <div class="viewer-label-value">
+      <span class="viewer-label">verifier:</span>
+      <span class="viewer-value success">PASS (signatures ✓, hash_chain ✓, policy_hash ✓)</span>
+    </div>
+
+    <!-- Footer note -->
+    <div class="viewer-footer-note">
+      Redacted, documentation-friendly transcript replay output.
+    </div>
+
+    <!-- Export actions -->
+    <div class="viewer-actions">
+      <button type="button" class="viewer-btn primary">Export GC PDF</button>
+      <button type="button" class="viewer-btn secondary">Export Insurer PDF</button>
+    </div>
+  </div>
+
+  <div style="margin-top: 32px; padding: 16px; background: rgba(13,21,32,0.6); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); max-width: 640px;">
+    <h3 style="color:#e2e8f0; font-size:14px; margin-bottom:12px;">Attributes summary</h3>
+    <ul style="color:#94a3b8; font-size:13px; line-height:1.8; margin:0; padding-left:20px;">
+      <li><strong>Panel:</strong> bg <code>#050810</code>, border <code>rgba(255,255,255,0.18)</code> 2px, radius 14px, padding 24px.</li>
+      <li><strong>Text:</strong> primary <code>#e5e7eb</code>, muted <code>#9ca3af</code>, accent <code>#4fa8ff</code>.</li>
+      <li><strong>Font:</strong> monospace stack (SF Mono, Menlo, Monaco, Consolas, …), size 15px body, 13px small.</li>
+      <li><strong>Spacing:</strong> 24px padding, ~36px between sections, ~28px between label/value blocks.</li>
+      <li><strong>Verdict row:</strong> flex, gap 24px, border-bottom 1px; label uppercase 13px muted, value accent.</li>
+      <li><strong>Buttons:</strong> primary = accent bg + dark text; secondary = transparent + border.</li>
+    </ul>
+  </div>
+</body>
+</html>
