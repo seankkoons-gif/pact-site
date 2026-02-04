@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pact_</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: #0d1520;
+            --bg-elevated: #161d2b;
+            --text-primary: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-dim: #64748b;
+            --accent: #60a5fa;
+            --accent-bright: #93c5fd;
+            --border: rgba(100, 116, 139, 0.2);
+            --glow: rgba(96, 165, 250, 0.1);
+        }
+
+        body {
+            font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-body);
+            line-height: 1.65;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 10%, rgba(96, 165, 250, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(147, 197, 253, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 28px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            background: rgba(5, 10, 20, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin: 0 -56px;
+            padding-left: 56px;
+            padding-right: 56px;
+        }
+
+        .logo img {
+            height: 34px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent-bright);
+        }
+
+        nav a.active {
+            color: var(--text-primary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 0 100px;
+            max-width: 1000px;
+        }
+
+        .hero h1 {
+            font-size: 84px;
+            font-weight: 700;
+            line-height: 0.95;
+            margin-bottom: 40px;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
+            text-shadow: 0 0 40px rgba(96, 165, 250, 0.15);
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: var(--text-body);
+            line-height: 1.6;
+            margin-bottom: 28px;
+            max-width: 880px;
+        }
+
+        .hero .muted {
+            font-size: 19px;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .hero-spine {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-top: 56px;
+            padding: 20px 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 4px;
+            letter-spacing: 0.01em;
+            display: inline-block;
+        }
+
+        .hero-spine span {
+            color: var(--accent);
+            margin: 0 12px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 52px;
+        }
+
+        .cta-button {
+            padding: 16px 36px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:hover {
+            border-color: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 32px rgba(96, 165, 250, 0.2);
+        }
+
+        .cta-button:hover::before {
+            opacity: 0.1;
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin: 100px 0;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            background: var(--bg-elevated);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        section h2 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 56px;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+        }
+
+        section p {
+            font-size: 19px;
+            color: var(--text-body);
+            line-height: 1.7;
+            max-width: 1000px;
+        }
+
+        section p + p {
+            margin-top: 24px;
+        }
+
+        /* Comparison */
+        .compare-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            margin: 64px 0;
+        }
+
+        .compare-panel {
+            padding: 44px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .compare-panel h3 {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 28px;
+        }
+
+        .compare-panel ul {
+            list-style: none;
+        }
+
+        .compare-panel li {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-body);
+            margin-bottom: 16px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .compare-panel li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--text-dim);
+            border-radius: 50%;
+        }
+
+        .compare-panel.with {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-elevated));
+            border-color: var(--accent);
+            box-shadow: 0 0 32px var(--glow);
+        }
+
+        .compare-panel.with h3 {
+            color: var(--accent-bright);
+        }
+
+        .compare-panel.with li::before {
+            background: var(--accent);
+        }
+
+        /* Code Block */
+        .code-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 36px;
+            margin: 48px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-body);
+        }
+
+        .code-block .comment {
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin-top: 36px;
+        }
+
+        ul li {
+            font-size: 19px;
+            color: var(--text-body);
+            line-height: 1.7;
+            padding-left: 32px;
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Not Block */
+        .not-block {
+            margin-top: 56px;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .not-block strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Who Grid */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px;
+            margin-top: 64px;
+        }
+
+        .who-item {
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .who-item:hover {
+            background: var(--bg-elevated);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .who-item h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+        }
+
+        .who-item p {
+            font-size: 17px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 100px 0 70px;
+            border-top: 1px solid var(--border);
+            margin-top: 140px;
+        }
+
+        footer p {
+            font-size: 16px;
+            color: var(--text-dim);
+            margin-bottom: 14px;
+        }
+
+        footer .copyright {
+            font-size: 15px;
+            color: #475569;
+        }
+
+        footer .copyright .accent {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 40px;
+            }
+
+            header {
+                padding-left: 40px;
+                padding-right: 40px;
+                margin: 0 -40px;
+            }
+
+            .hero h1 {
+                font-size: 64px;
+            }
+
+            .feature-cards,
+            .who-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .compare-block {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            section h2 {
+                font-size: 38px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            nav {
+                gap: 32px;
+                flex-wrap: wrap;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-button {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo"><img src="pact-logo.png" alt="pact_"></a>
+            <nav>
+                <a href="constitution.html">Constitution</a>
+                <a href="evidence.html">Evidence</a>
+                <a href="verifier.html">Verifier</a>
+                <a href="use-case-autonomous-api-procurement.html">Use Case</a>
+                <a href="https://x.com/pact_protocol" target="_blank">X</a>
+                <a href="https://github.com/pact-protocol" target="_blank" rel="noopener">GitHub</a>
+                <a href="pact-docs.pdf" target="_blank">Docs</a>
+                <a href="mailto:sean@dao5.com">Email</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <h1>Make autonomous agents auditable.</h1>
+                <p>Pact turns agent negotiations and high-risk actions into cryptographic evidence: signed transcripts, verifier outputs, and responsibility judgments—portable enough for audit, disputes, and insurance.</p>
+                <p class="muted">If an agent can act, Pact makes that action accountable.</p>
+                <div class="cta-buttons">
+                    <a href="#demo" class="cta-button">Run the demo</a>
+                    <a href="constitution.html" class="cta-button">Read the Constitution</a>
+                </div>
+                <div class="hero-spine">Intent <span>→</span> Negotiation <span>→</span> Policy <span>→</span> Settlement <span>→</span> Evidence <span>→</span> Blame</div>
+            </section>
+
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>Proof of Negotiation</h3>
+                    <p>Cryptographically signed records of agent agreements and commitments.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Evidence Bundle</h3>
+                    <p>Portable collections of transaction data and verification artifacts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Default Blame Logic</h3>
+                    <p>Deterministic attribution of responsibility when transactions fail.</p>
+                </div>
+            </div>
+
+            <section>
+                <h2>Why Pact exists</h2>
+
+                <div class="compare-block">
+                    <div class="compare-panel">
+                        <h3>Without Pact</h3>
+                        <ul>
+                            <li>Logs are informal and mutable</li>
+                            <li>Payments prove nothing about intent</li>
+                            <li>Failures are ambiguous</li>
+                            <li>Disputes require humans and guesswork</li>
+                            <li>Insurance and audit are impossible</li>
+                        </ul>
+                    </div>
+
+                    <div class="compare-panel with">
+                        <h3>With Pact</h3>
+                        <ul>
+                            <li>Negotiation is signed and hash-linked</li>
+                            <li>Intent and policy are explicit</li>
+                            <li>Settlement outcomes are deterministic</li>
+                            <li>Failures are classified with blame</li>
+                            <li>Evidence is portable and verifiable</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="muted" style="margin-top: 40px; font-style: italic;">
+                    Pact produces evidence for successful transactions, policy aborts, timeouts, and settlement failures.
+                    Failure is a first-class outcome.
+                </p>
+            </section>
+
+            <section id="demo">
+                <h2>CLI demo</h2>
+                <div class="code-block">
+                    <pre><code><span class="comment"># Run canonical demo negotiation</span>
+tsx demo/negotiate.ts --policy ./policies/default.json
+
+<span class="comment"># Verify transcript integrity</span>
+pact replay --transcript ./artifacts/transcript.json
+
+<span class="comment"># Generate evidence bundle</span>
+pact bundle --transcript ./artifacts/transcript.json --output ./artifacts/bundle.json
+
+<span class="comment"># Run blame judgment</span>
+pact judge --bundle ./artifacts/bundle.json --failure-event settlement_timeout</code></pre>
+                </div>
+                <p class="muted" style="margin-top: 28px;">
+                    <a href="evidence.html" style="color: var(--accent);">Evidence</a> (what gets produced) · <a href="verifier.html" style="color: var(--accent);">Verifier</a> (how it's checked) · <a href="constitution.html" style="color: var(--accent);">Constitution</a> (rules of evidence)
+                </p>
+            </section>
+
+            <section>
+                <h2>What Pact does</h2>
+                <ul>
+                    <li>Signed, hash-linked negotiation transcripts (Proof of Negotiation)</li>
+                    <li>Deterministic replay and verification</li>
+                    <li>Evidence bundles with integrity checks (auditor-ready)</li>
+                    <li>Default Blame Logic (DBL) to attribute responsibility from the signed record</li>
+                </ul>
+                <div class="not-block">
+                    <p><strong>What Pact is not:</strong></p>
+                    <ul style="margin-top: 20px;">
+                        <li>Not a marketplace</li>
+                        <li>Not a payment rail / processor</li>
+                        <li>Not a coordination DAO</li>
+                    </ul>
+                    <p style="margin-top: 24px;">It sits above existing rails and focuses on evidence, not execution.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Who it's for</h2>
+                <div class="who-grid">
+                    <div class="who-item">
+                        <h3>Developers</h3>
+                        <p>Ship agent commerce without inventing dispute systems.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>Security/Risk</h3>
+                        <p>Reduce blast radius with deterministic evidence.</p>
+                    </div>
+                    <div class="who-item">
+                        <h3>General Counsel / Audit / Insurers</h3>
+                        <p>Approve and underwrite autonomous workflows.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Open-source · Rail-agnostic · Transcript-first</p>
+            <p class="copyright">© pact<span class="accent">_</span></p>
+        </footer>
+    </div>
+</body>
+</html>
