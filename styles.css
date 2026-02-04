@@ -192,6 +192,19 @@ main { padding: var(--space-24) 0; }
     max-width: 100%;
 }
 
+.hero .back-link {
+    font-size: var(--text-small);
+    margin-bottom: var(--space-16);
+}
+.hero .back-link a {
+    color: var(--text-dim);
+    text-decoration: none;
+}
+.hero .back-link a:hover {
+    color: var(--accent-bright);
+}
+.hero .hero-cta { margin-top: var(--space-24); margin-bottom: 0; }
+
 /* ---------- Sections (universal) ---------- */
 section {
     padding: var(--space-28) 0;
@@ -1130,75 +1143,38 @@ a:hover { color: var(--accent-bright); }
     }
 }
 
-/* ---------- GC One-Pager (print-friendly) ---------- */
-body.page-gc {
-    background: #f8fafc;
-    color: #1e293b;
-}
-body.page-gc::before {
-    display: none;
-}
-body.page-gc .container {
-    max-width: var(--container-max);
-}
-body.page-gc header {
-    background: #fff;
-    border-bottom-color: #e2e8f0;
-}
-body.page-gc nav a {
-    color: #64748b;
-}
-body.page-gc nav a:hover,
-body.page-gc nav a.active { color: #0f172a; }
-body.page-gc main section {
-    border-bottom: 1px solid #e2e8f0;
-    padding: var(--space-32) 0;
-}
-body.page-gc main section:last-of-type { border-bottom: none; }
-body.page-gc h1, body.page-gc h2, body.page-gc h3 {
-    color: #0f172a;
-}
-body.page-gc p, body.page-gc li {
-    color: #334155;
-}
-body.page-gc .gc-subtitle {
-    font-size: var(--text-lead);
-    color: #475569;
-    margin-bottom: var(--space-32);
-}
-body.page-gc .gc-closing {
-    font-weight: 700;
-    color: #0f172a;
-    margin-top: var(--space-32);
-    padding-top: var(--space-24);
-    border-top: 1px solid #e2e8f0;
-}
-body.page-gc footer {
-    border-top-color: #e2e8f0;
-}
-body.page-gc footer p, body.page-gc footer a {
-    color: #64748b;
-}
-body.page-gc .gc-pdf-cta {
+/* ---------- GC / Insurers: same UI as rest of site; print-only light theme ---------- */
+/* PDF CTA (dark theme, on screen) */
+.gc-pdf-cta {
     position: absolute;
     right: var(--container-padding);
     top: 50%;
     transform: translateY(-50%);
     font-size: var(--text-small);
     font-weight: 500;
-    color: #2563eb;
+    color: var(--accent);
     text-decoration: none;
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--border);
     padding: 8px 16px;
     border-radius: 6px;
-    background: #fff;
-    transition: background 0.2s, color 0.2s;
+    background: transparent;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-body.page-gc .gc-pdf-cta:hover {
-    background: #f1f5f9;
-    color: #1d4ed8;
+.gc-pdf-cta:hover {
+    border-color: var(--accent);
+    color: var(--accent-bright);
+    background: var(--glow);
 }
-body.page-gc header { position: relative; }
+header:has(.gc-pdf-cta) { position: relative; }
+
+.gc-closing {
+    text-align: left;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: var(--space-48);
+    padding-top: var(--space-24);
+    border-top: 1px solid var(--border);
+}
 
 /* Print-only and screen-only utilities */
 .no-print { }
@@ -1206,11 +1182,24 @@ body.page-gc header { position: relative; }
 @media print {
     .no-print { display: none !important; }
     .no-screen { display: block !important; }
-    body.page-gc { background: #fff; }
-    body.page-gc main section { break-inside: avoid; }
+    body.page-gc {
+        background: #fff !important;
+        color: #1e293b;
+    }
+    body.page-gc::before { display: none !important; }
     body.page-gc header,
     body.page-gc footer,
     body.page-gc .gc-pdf-cta { display: none !important; }
+    body.page-gc main section {
+        break-inside: avoid;
+        border-bottom: 1px solid #e2e8f0;
+        padding: var(--space-32) 0;
+    }
+    body.page-gc main section:last-of-type { border-bottom: none; }
+    body.page-gc h1, body.page-gc h2, body.page-gc h3 { color: #0f172a; }
+    body.page-gc p, body.page-gc li { color: #334155; }
+    body.page-gc .gc-subtitle { color: #475569; }
+    body.page-gc .gc-closing { font-weight: 700; color: #0f172a; }
     body.page-gc .print-footer {
         display: block !important;
         position: fixed;
@@ -1271,7 +1260,7 @@ body.page-printable header .gc-pdf-cta { display: none; }
 .failure-step-content ul:last-child,
 .failure-step-content p:last-of-type { margin-bottom: 0; }
 .failure-closing {
-    text-align: center;
+    text-align: left;
     font-weight: 600;
     color: var(--text-primary);
     margin-top: var(--space-48);
